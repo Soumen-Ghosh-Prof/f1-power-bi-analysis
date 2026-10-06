@@ -1,0 +1,10 @@
+data/
+*.tmp
+*.temp
+.cache/
+.temp/
+.DS_Store
+Thumbs.db
+.vscode/
+.idea/
+**/.pbi/
