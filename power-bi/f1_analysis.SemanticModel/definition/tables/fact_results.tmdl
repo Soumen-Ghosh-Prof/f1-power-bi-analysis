@@ -1,0 +1,176 @@
+table fact_results
+	lineageTag: fec866ff-86da-4bd8-835b-a10c0fc00c9f
+
+	column result_id
+		dataType: int64
+		formatString: 0
+		lineageTag: c9ee0b30-551c-4491-aa8f-9204176eabbf
+		summarizeBy: sum
+		sourceColumn: result_id
+
+		annotation SummarizationSetBy = Automatic
+
+	column race_id
+		dataType: int64
+		formatString: 0
+		lineageTag: c4805d6d-52de-4e02-b7dd-c0f76b243dd2
+		summarizeBy: none
+		sourceColumn: race_id
+
+		annotation SummarizationSetBy = Automatic
+
+	column driver_id
+		dataType: int64
+		formatString: 0
+		lineageTag: 01f9452f-ef14-422c-91f7-f7c4fe7bb8d6
+		summarizeBy: none
+		sourceColumn: driver_id
+
+		annotation SummarizationSetBy = Automatic
+
+	column consturctor_id
+		dataType: int64
+		formatString: 0
+		lineageTag: 9de5867a-bfaf-4b22-b31c-2119082b81a5
+		summarizeBy: none
+		sourceColumn: consturctor_id
+
+		annotation SummarizationSetBy = Automatic
+
+	column car_number
+		dataType: string
+		lineageTag: 2d5e5756-3e86-466a-8952-736e0e8522d5
+		summarizeBy: none
+		sourceColumn: car_number
+
+		annotation SummarizationSetBy = Automatic
+
+	column starting_position
+		dataType: int64
+		formatString: 0
+		lineageTag: e74c8c76-1901-4042-aa84-da94688f4ddc
+		summarizeBy: sum
+		sourceColumn: starting_position
+
+		annotation SummarizationSetBy = Automatic
+
+	column position_text
+		dataType: string
+		lineageTag: d87aacb6-feb8-4da4-a733-1c9d1e7699f9
+		summarizeBy: none
+		sourceColumn: position_text
+
+		annotation SummarizationSetBy = Automatic
+
+	column position_order
+		dataType: int64
+		formatString: 0
+		lineageTag: 8ed2b6d3-907f-48c4-8221-c6ec735c1e9f
+		summarizeBy: sum
+		sourceColumn: position_order
+
+		annotation SummarizationSetBy = Automatic
+
+	column points
+		dataType: double
+		lineageTag: 953bed79-1238-4e79-a2e7-702cd2848a17
+		summarizeBy: sum
+		sourceColumn: points
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column laps
+		dataType: int64
+		formatString: 0
+		lineageTag: 15650d00-ec45-48e5-9e23-68a1e8841d47
+		summarizeBy: sum
+		sourceColumn: laps
+
+		annotation SummarizationSetBy = Automatic
+
+	column time
+		dataType: string
+		lineageTag: 5159fe36-3ffc-4dac-b699-b4177410e289
+		summarizeBy: none
+		sourceColumn: time
+
+		annotation SummarizationSetBy = Automatic
+
+	column milliseconds
+		dataType: int64
+		formatString: 0
+		lineageTag: 62d8ee91-930b-4cba-9949-8fbe8850b07c
+		summarizeBy: sum
+		sourceColumn: milliseconds
+
+		annotation SummarizationSetBy = Automatic
+
+	column fastest_lap
+		dataType: int64
+		formatString: 0
+		lineageTag: 48f58c10-3c98-48fb-8fd3-279a396c450d
+		summarizeBy: sum
+		sourceColumn: fastest_lap
+
+		annotation SummarizationSetBy = Automatic
+
+	column fastest_lap_rank
+		dataType: int64
+		formatString: 0
+		lineageTag: 46bfb90c-8075-427b-bb7e-85c114955fd5
+		summarizeBy: sum
+		sourceColumn: fastest_lap_rank
+
+		annotation SummarizationSetBy = Automatic
+
+	column fastest_lap_time
+		dataType: string
+		lineageTag: 7c6a1491-56ce-425f-87b0-b18838779805
+		summarizeBy: none
+		sourceColumn: fastest_lap_time
+
+		annotation SummarizationSetBy = Automatic
+
+	column fastest_lap_avg_speed
+		dataType: double
+		lineageTag: 0972f1fe-4a4c-4982-99af-7dba24be6c83
+		summarizeBy: sum
+		sourceColumn: fastest_lap_avg_speed
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column status_id
+		dataType: int64
+		formatString: 0
+		lineageTag: 15c10bab-98ef-4f02-9396-08269763d487
+		summarizeBy: none
+		sourceColumn: status_id
+
+		annotation SummarizationSetBy = Automatic
+
+	column finishing_position
+		dataType: int64
+		formatString: 0
+		lineageTag: e713f2d0-867b-4806-9e9e-aee06cce9887
+		summarizeBy: sum
+		sourceColumn: finishing_position
+
+		annotation SummarizationSetBy = Automatic
+
+	partition fact_results = m
+		mode: import
+		queryGroup: fact
+		source =
+				let
+				    Source = results
+				in
+				    Source
+
+	annotation PBI_NavigationStepName = Navigation
+
+	annotation PBI_ResultType = Table
+

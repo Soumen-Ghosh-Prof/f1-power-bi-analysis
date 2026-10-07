@@ -1,0 +1,78 @@
+table dim_date
+	lineageTag: dbae29d0-fe2b-452e-a978-647b4eb00aa2
+	dataCategory: Time
+
+	column date
+		isKey
+		formatString: yyyy-mm-dd
+		lineageTag: 1b67bcdd-d524-470d-a8e4-f191b1481d2a
+		summarizeBy: none
+		sourceColumn: [Date]
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation UnderlyingDateTimeDataType = Date
+
+		annotation PBI_FormatHint = {"isDateTimeCustom":true}
+
+	column year = FORMAT(dim_date[date], "yyyy")
+		lineageTag: 31bea560-c3dc-49e8-b808-8c19d4e10767
+		summarizeBy: none
+
+		annotation SummarizationSetBy = Automatic
+
+	column month_no = MONTH(dim_date[date])
+		formatString: 0
+		lineageTag: bef26507-f16a-409e-8002-f16ccb46663e
+		summarizeBy: none
+
+		annotation SummarizationSetBy = Automatic
+
+	column month_name = FORMAT(dim_date[date], "mmm")
+		lineageTag: 88f3f455-ba81-4f77-a15e-b91d5f8c1c49
+		summarizeBy: none
+		sortByColumn: month_no
+
+		annotation SummarizationSetBy = Automatic
+
+	column year_month = FORMAT(dim_date[date], "yyyy-mmm")
+		lineageTag: b5e068c9-5c15-4386-964f-581899e87184
+		summarizeBy: none
+		sortByColumn: year_month_sort
+
+		annotation SummarizationSetBy = Automatic
+
+	column year_month_sort = dim_date[year] * 100 + dim_date[month_no]
+		lineageTag: f5773a57-3a19-40dd-90b1-c7727dc05fa0
+		summarizeBy: none
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column day_of_week_no = WEEKDAY(dim_date[date])
+		formatString: 0
+		lineageTag: a515ec8a-1819-4304-a2df-fd05e55a7abb
+		summarizeBy: none
+
+		annotation SummarizationSetBy = Automatic
+
+	column day_of_week = FORMAT(dim_date[date], "ddd")
+		lineageTag: 093439f4-3592-47bc-a26f-a5bcef379f9d
+		summarizeBy: none
+		sortByColumn: day_of_week_no
+
+		annotation SummarizationSetBy = Automatic
+
+	column decade = FLOOR(YEAR(dim_date[date]), 10) & "s"
+		lineageTag: 6f2ef6c3-1fcf-40ef-8626-3896bf49b024
+		summarizeBy: none
+
+		annotation SummarizationSetBy = Automatic
+
+	partition dim_date = calculated
+		mode: import
+		source = CALENDAR(DATE(MIN(dim_races[year]), 1, 1), DATE(MAX(dim_races[year]), 12, 31))
+
+	annotation PBI_Id = 0b555a8ffea44f55a59ba481750be178
+

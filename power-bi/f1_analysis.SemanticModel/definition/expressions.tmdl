@@ -1,0 +1,288 @@
+expression circuits =
+		let
+		    Source = Csv.Document(File.Contents("C:\data-analytics-projects\power-bi-portfolio-project\data\F1-Race\circuits.csv"),[Delimiter=",", Columns=9, Encoding=65001, QuoteStyle=QuoteStyle.None]),
+		    #"Promoted Headers" = Table.PromoteHeaders(Source, [PromoteAllScalars=true]),
+		    #"Renamed Columns" = Table.RenameColumns(#"Promoted Headers",{{"circuitId", "circuit_id"}, {"circuitRef", "circuit_ref"}, {"name", "circuit_name"}}),
+		    #"Changed Type" = Table.TransformColumnTypes(#"Renamed Columns",{{"circuit_id", Int64.Type}})
+		in
+		    #"Changed Type"
+	lineageTag: fc97925e-6ae1-4be8-98bb-7f070d3ceea2
+	queryGroup: staging
+
+	annotation PBI_NavigationStepName = Navigation
+
+	annotation PBI_ResultType = Table
+
+expression constructor_results =
+		let
+		    Source = Csv.Document(File.Contents("C:\data-analytics-projects\power-bi-portfolio-project\data\F1-Race\constructor_results.csv"),[Delimiter=",", Columns=5, Encoding=1252, QuoteStyle=QuoteStyle.None]),
+		    #"Promoted Headers" = Table.PromoteHeaders(Source, [PromoteAllScalars=true]),
+		    #"Changed Type" = Table.TransformColumnTypes(#"Promoted Headers",{{"constructorResultsId", Int64.Type}, {"raceId", Int64.Type}, {"constructorId", Int64.Type}, {"points", Int64.Type}, {"status", type text}})
+		in
+		    #"Changed Type"
+	lineageTag: 96634d34-e2ef-4f56-ae84-b5421e5d4279
+	queryGroup: staging
+
+	annotation PBI_NavigationStepName = Navigation
+
+	annotation PBI_ResultType = Table
+
+expression constructor_standings =
+		let
+		    Source = Csv.Document(File.Contents("C:\data-analytics-projects\power-bi-portfolio-project\data\F1-Race\constructor_standings.csv"),[Delimiter=",", Columns=7, Encoding=1252, QuoteStyle=QuoteStyle.None]),
+		    #"Promoted Headers" = Table.PromoteHeaders(Source, [PromoteAllScalars=true])
+		in
+		    #"Promoted Headers"
+	lineageTag: b4bac2e8-bf8a-40d7-9f5c-f0d7011ed884
+	queryGroup: staging
+
+	annotation PBI_NavigationStepName = Navigation
+
+	annotation PBI_ResultType = Table
+
+expression constructors =
+		let
+		    Source = Csv.Document(File.Contents("C:\data-analytics-projects\power-bi-portfolio-project\data\F1-Race\constructors.csv"),[Delimiter=",", Columns=5, Encoding=1252, QuoteStyle=QuoteStyle.None]),
+		    #"Promoted Headers" = Table.PromoteHeaders(Source, [PromoteAllScalars=true]),
+		    #"Renamed Columns" = Table.RenameColumns(#"Promoted Headers",{{"constructorId", "constructor_id"}, {"name", "constructor_name"}}),
+		    #"Changed Type" = Table.TransformColumnTypes(#"Renamed Columns",{{"constructor_id", Int64.Type}})
+		in
+		    #"Changed Type"
+	lineageTag: d2fd3841-490f-4497-86a7-640a0121fc8e
+	queryGroup: staging
+
+	annotation PBI_NavigationStepName = Navigation
+
+	annotation PBI_ResultType = Table
+
+expression driver_standings =
+		let
+		    Source = Csv.Document(File.Contents("C:\data-analytics-projects\power-bi-portfolio-project\data\F1-Race\driver_standings.csv"),[Delimiter=",", Columns=7, Encoding=1252, QuoteStyle=QuoteStyle.None]),
+		    #"Promoted Headers" = Table.PromoteHeaders(Source, [PromoteAllScalars=true]),
+		    #"Changed Type" = Table.TransformColumnTypes(#"Promoted Headers",{{"driverStandingsId", Int64.Type}, {"raceId", Int64.Type}, {"driverId", Int64.Type}, {"points", Int64.Type}, {"position", Int64.Type}, {"positionText", Int64.Type}, {"wins", Int64.Type}})
+		in
+		    #"Changed Type"
+	lineageTag: e04873ad-dc4e-4806-bf86-0c39cb8783f7
+	queryGroup: staging
+
+	annotation PBI_NavigationStepName = Navigation
+
+	annotation PBI_ResultType = Table
+
+expression drivers =
+		let
+		    Source = Csv.Document(File.Contents("C:\data-analytics-projects\power-bi-portfolio-project\data\F1-Race\drivers.csv"),[Delimiter=",", Columns=9, Encoding=65001, QuoteStyle=QuoteStyle.None]),
+		    #"Promoted Headers" = Table.PromoteHeaders(Source, [PromoteAllScalars=true]),
+		    #"Merged Columns" = Table.CombineColumns(#"Promoted Headers",{"forename", "surname"},Combiner.CombineTextByDelimiter(" ", QuoteStyle.None),"Merged"),
+		    #"Renamed Columns" = Table.RenameColumns(#"Merged Columns",{{"driverId", "driver_id"}, {"driverRef", "driver_ref"}, {"Merged", "driver_name"}}),
+		    #"Changed Type" = Table.TransformColumnTypes(#"Renamed Columns",{{"driver_id", Int64.Type}, {"dob", type date}})
+		in
+		    #"Changed Type"
+	lineageTag: 1ad1b63f-d83d-41a4-a309-45ef131a02e4
+	queryGroup: staging
+
+	annotation PBI_NavigationStepName = Navigation
+
+	annotation PBI_ResultType = Table
+
+expression lap_times =
+		let
+		    Source = Csv.Document(File.Contents("C:\data-analytics-projects\power-bi-portfolio-project\data\F1-Race\lap_times.csv"),[Delimiter=",", Columns=6, Encoding=1252, QuoteStyle=QuoteStyle.None]),
+		    #"Promoted Headers" = Table.PromoteHeaders(Source, [PromoteAllScalars=true]),
+		    #"Renamed Columns" = Table.RenameColumns(#"Promoted Headers",{{"raceId", "race_id"}, {"driverId", "driver_id"}, {"lap", "lap_number"}}),
+		    #"Changed Type" = Table.TransformColumnTypes(#"Renamed Columns",{{"race_id", Int64.Type}, {"driver_id", Int64.Type}, {"lap_number", Int64.Type}, {"position", Int64.Type}, {"milliseconds", Int64.Type}})
+		in
+		    #"Changed Type"
+	lineageTag: 8f273300-c6a1-4dbd-8bc9-96cdb8bf7a99
+	queryGroup: staging
+
+	annotation PBI_NavigationStepName = Navigation
+
+	annotation PBI_ResultType = Table
+
+expression pit_stops =
+		let
+		    Source = Csv.Document(File.Contents("C:\data-analytics-projects\power-bi-portfolio-project\data\F1-Race\pit_stops.csv"),[Delimiter=",", Columns=7, Encoding=1252, QuoteStyle=QuoteStyle.None]),
+		    #"Promoted Headers" = Table.PromoteHeaders(Source, [PromoteAllScalars=true]),
+		    #"Renamed Columns" = Table.RenameColumns(#"Promoted Headers",{{"raceId", "race_id"}, {"driverId", "driver_id"}}),
+		    #"Changed Type" = Table.TransformColumnTypes(#"Renamed Columns",{{"race_id", Int64.Type}, {"driver_id", Int64.Type}, {"stop", Int64.Type}, {"lap", Int64.Type}, {"milliseconds", Int64.Type}})
+		in
+		    #"Changed Type"
+	lineageTag: 112f0307-03c7-42a9-b733-dedcad30aa85
+	queryGroup: staging
+
+	annotation PBI_NavigationStepName = Navigation
+
+	annotation PBI_ResultType = Table
+
+expression qualifying =
+		let
+		    Source = Csv.Document(File.Contents("C:\data-analytics-projects\power-bi-portfolio-project\data\F1-Race\qualifying.csv"),[Delimiter=",", Columns=9, Encoding=1252, QuoteStyle=QuoteStyle.None]),
+		    #"Promoted Headers" = Table.PromoteHeaders(Source, [PromoteAllScalars=true]),
+		    #"Renamed Columns" = Table.RenameColumns(#"Promoted Headers",{{"qualifyId", "qualify_id"}, {"raceId", "race_id"}, {"driverId", "driver_id"}, {"constructorId", "constructor_id"}, {"number", "car_number"}, {"position", "qualify_position"}})
+		in
+		    #"Renamed Columns"
+	lineageTag: 0d5c0e24-a396-405d-8aac-67886cf9a16e
+	queryGroup: staging
+
+	annotation PBI_NavigationStepName = Navigation
+
+	annotation PBI_ResultType = Table
+
+expression races =
+		let
+		    Source = Csv.Document(File.Contents("C:\data-analytics-projects\power-bi-portfolio-project\data\F1-Race\races.csv"),[Delimiter=",", Columns=18, Encoding=1252, QuoteStyle=QuoteStyle.None]),
+		    #"Promoted Headers" = Table.PromoteHeaders(Source, [PromoteAllScalars=true]),
+		    #"Renamed Columns" = Table.RenameColumns(#"Promoted Headers",{{"raceId", "race_id"}, {"circuitId", "circuit_id"}, {"name", "race_name"}}),
+		    #"Changed Type" = Table.TransformColumnTypes(#"Renamed Columns",{{"date", type date}, {"race_id", Int64.Type}, {"year", Int64.Type}, {"round", Int64.Type}, {"circuit_id", Int64.Type}})
+		in
+		    #"Changed Type"
+	lineageTag: 0fa2d8b5-ae06-4aae-a784-116511598578
+	queryGroup: staging
+
+	annotation PBI_NavigationStepName = Navigation
+
+	annotation PBI_ResultType = Table
+
+expression results =
+		let
+		    Source = Csv.Document(File.Contents("C:\data-analytics-projects\power-bi-portfolio-project\data\F1-Race\results.csv"),[Delimiter=",", Columns=18, Encoding=1252, QuoteStyle=QuoteStyle.None]),
+		    #"Promoted Headers" = Table.PromoteHeaders(Source, [PromoteAllScalars=true]),
+		    #"Renamed Columns" = Table.RenameColumns(#"Promoted Headers",{{"resultId", "result_id"}, {"raceId", "race_id"}, {"driverId", "driver_id"}, {"constructorId", "consturctor_id"}, {"number", "car_number"}, {"grid", "starting_position"}, {"position", "finishing_position"}, {"positionText", "position_text"}, {"positionOrder", "position_order"}, {"fastestLap", "fastest_lap"}, {"rank", "fastest_lap_rank"}, {"fastestLapTime", "fastest_lap_time"}, {"fastestLapSpeed", "fastest_lap_avg_speed"}, {"statusId", "status_id"}}),
+		    #"Replaced \N with -" = Table.ReplaceValue(#"Renamed Columns","\N","-",Replacer.ReplaceText,{"car_number", "time", "fastest_lap_time"}),
+		    #"Replaced \N with null" = Table.ReplaceValue(#"Replaced \N with -","\N",null,Replacer.ReplaceValue,{"finishing_position", "milliseconds", "fastest_lap", "fastest_lap_rank", "fastest_lap_avg_speed"}),
+		    #"Changed Type" = Table.TransformColumnTypes(#"Replaced \N with null",{{"result_id", Int64.Type}, {"race_id", Int64.Type}, {"driver_id", Int64.Type}, {"consturctor_id", Int64.Type}, {"starting_position", Int64.Type}, {"finishing_position", Int64.Type}, {"position_order", Int64.Type}, {"milliseconds", Int64.Type}, {"fastest_lap", Int64.Type}, {"fastest_lap_rank", Int64.Type}, {"status_id", Int64.Type}, {"laps", Int64.Type}, {"points", type number}, {"fastest_lap_avg_speed", type number}})
+		in
+		    #"Changed Type"
+	lineageTag: cdb5489d-52fb-485b-a6c5-290b062c964a
+	queryGroup: staging
+
+	annotation PBI_NavigationStepName = Navigation
+
+	annotation PBI_ResultType = Table
+
+expression seasons =
+		let
+		    Source = Csv.Document(File.Contents("C:\data-analytics-projects\power-bi-portfolio-project\data\F1-Race\seasons.csv"),[Delimiter=",", Columns=2, Encoding=1252, QuoteStyle=QuoteStyle.None]),
+		    #"Promoted Headers" = Table.PromoteHeaders(Source, [PromoteAllScalars=true]),
+		    #"Changed Type" = Table.TransformColumnTypes(#"Promoted Headers",{{"year", Int64.Type}, {"url", type text}}),
+		    #"Sorted Rows" = Table.Sort(#"Changed Type",{{"year", Order.Ascending}})
+		in
+		    #"Sorted Rows"
+	lineageTag: 9fa8f6a0-8732-4447-aed2-d3e3440de76c
+	queryGroup: staging
+
+	annotation PBI_NavigationStepName = Navigation
+
+	annotation PBI_ResultType = Table
+
+expression sprint_results =
+		let
+		    Source = Csv.Document(File.Contents("C:\data-analytics-projects\power-bi-portfolio-project\data\F1-Race\sprint_results.csv"),[Delimiter=",", Columns=16, Encoding=1252, QuoteStyle=QuoteStyle.None]),
+		    #"Promoted Headers" = Table.PromoteHeaders(Source, [PromoteAllScalars=true]),
+		    #"Renamed Columns" = Table.RenameColumns(#"Promoted Headers",{{"resultId", "result_id"}, {"raceId", "race_id"}, {"driverId", "driver_id"}, {"constructorId", "consturctor_id"}, {"number", "car_number"}, {"grid", "starting_position"},{"position", "finishing_position"}, {"positionText", "position_text"}, {"positionOrder", "position_order"}, {"fastestLap", "fastest_lap"}, {"fastestLapTime", "fastest_lap_time"}, {"statusId", "status_id"}}),
+		    #"Replaced \N with -" = Table.ReplaceValue(#"Renamed Columns","\N","-",Replacer.ReplaceText,{"time", "fastest_lap_time"}),
+		    #"Replaced \N with null" = Table.ReplaceValue(#"Replaced \N with -","\N",null,Replacer.ReplaceValue,{"finishing_position", "milliseconds", "fastest_lap"}),
+		    #"Changed Type" = Table.TransformColumnTypes(#"Replaced \N with null",{{"result_id", Int64.Type}, {"race_id", Int64.Type}, {"driver_id", Int64.Type}, {"consturctor_id", Int64.Type}, {"starting_position", Int64.Type}, {"finishing_position", Int64.Type}, {"position_order", Int64.Type}, {"laps", Int64.Type}, {"status_id", Int64.Type}, {"fastest_lap", Int64.Type}, {"milliseconds", Int64.Type}, {"points", type number}})
+		in
+		    #"Changed Type"
+	lineageTag: d02fa1dd-2c40-4e94-a267-1aed3994ef5c
+	queryGroup: staging
+
+	annotation PBI_NavigationStepName = Navigation
+
+	annotation PBI_ResultType = Table
+
+expression status =
+		let
+		    Source = Csv.Document(File.Contents("C:\data-analytics-projects\power-bi-portfolio-project\data\F1-Race\status.csv"),[Delimiter=",", Columns=2, Encoding=1252, QuoteStyle=QuoteStyle.None]),
+		    #"Promoted Headers" = Table.PromoteHeaders(Source, [PromoteAllScalars=true]),
+		    #"Renamed Columns" = Table.RenameColumns(#"Promoted Headers",{{"statusId", "status_id"}}),
+		    #"Changed Type" = Table.TransformColumnTypes(#"Renamed Columns",{{"status_id", Int64.Type}}),
+		    #"Added Custom" = Table.AddColumn(#"Changed Type", "status_category", each if [status] = "Finished" then
+		    "Finished"
+		
+		else if Text.StartsWith([status], "+") then
+		    "Lapped"
+		
+		else if List.Contains(
+		    {
+		        "Accident",
+		        "Collision",
+		        "Spun off",
+		        "Fatal accident",
+		        "Collision damage",
+		        "Damage",
+		        "Debris",
+		        "Front wing",
+		        "Broken wing"
+		    },
+		    [status]
+		) then
+		    "Incident"
+		
+		else if List.Contains(
+		    {
+		        "Physical",
+		        "Injured",
+		        "Injury",
+		        "Driver unwell",
+		        "Eye injury",
+		        "Illness"
+		    },
+		    [status]
+		) then
+		    "Driver"
+		
+		else if List.Contains(
+		    {
+		        "Disqualified",
+		        "107% Rule",
+		        "Underweight",
+		        "Safety belt",
+		        "Excluded"
+		    },
+		    [status]
+		) then
+		    "Penalty"
+		
+		else if List.Contains(
+		    {
+		        "Did not qualify",
+		        "Did not prequalify"
+		    },
+		    [status]
+		) then
+		    "DNQ"
+		
+		else if List.Contains(
+		    {
+		        "Withdrew",
+		        "Not classified",
+		        "Not restarted",
+		        "Retired"
+		    },
+		    [status]
+		) then
+		    "Race Status"
+		
+		else if List.Contains(
+		    {
+		        "Safety",
+		        "Safety concerns"
+		    },
+		    [status]
+		) then
+		    "Safety"
+		
+		else
+		    "Mechanical")
+		in
+		    #"Added Custom"
+	lineageTag: ea38c056-12b7-4a52-8689-8e4d7718d11c
+	queryGroup: staging
+
+	annotation PBI_NavigationStepName = Navigation
+
+	annotation PBI_ResultType = Table
+

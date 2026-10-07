@@ -1,0 +1,58 @@
+table dim_circuits
+	lineageTag: c0881517-7c5b-4658-9904-90004a9b363d
+
+	column circuit_id
+		dataType: int64
+		formatString: 0
+		lineageTag: f4a77ce2-7a1c-40bd-bcdd-d5fcfaf0e725
+		summarizeBy: none
+		sourceColumn: circuit_id
+
+		annotation SummarizationSetBy = Automatic
+
+	column circuit_ref
+		dataType: string
+		lineageTag: 763735a0-aff4-43bf-83dc-e5a5aac5a0b0
+		summarizeBy: none
+		sourceColumn: circuit_ref
+
+		annotation SummarizationSetBy = Automatic
+
+	column circuit_name
+		dataType: string
+		lineageTag: 6d0bf9b1-bd6a-45d9-9d9d-60cffb4bcb8e
+		summarizeBy: none
+		sourceColumn: circuit_name
+
+		annotation SummarizationSetBy = Automatic
+
+	column location
+		dataType: string
+		lineageTag: dbd6a1d7-93a6-4d7c-84a7-a04b1c4e9f2c
+		summarizeBy: none
+		sourceColumn: location
+
+		annotation SummarizationSetBy = Automatic
+
+	column country
+		dataType: string
+		lineageTag: f2137373-63cb-4f70-9ef8-2926df38e93d
+		summarizeBy: none
+		sourceColumn: country
+
+		annotation SummarizationSetBy = Automatic
+
+	partition dim_circuits = m
+		mode: import
+		queryGroup: dim
+		source =
+				let
+				    Source = circuits,
+				    #"Removed Columns" = Table.RemoveColumns(Source,{"lat", "lng", "alt", "url"})
+				in
+				    #"Removed Columns"
+
+	annotation PBI_NavigationStepName = Navigation
+
+	annotation PBI_ResultType = Table
+

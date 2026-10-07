@@ -1,0 +1,42 @@
+table dim_constructors
+	lineageTag: 18e5b7a9-8f65-421a-9543-d8a55efed695
+
+	column constructor_id
+		dataType: int64
+		formatString: 0
+		lineageTag: 98d502df-0489-4180-a919-474d0756fe0c
+		summarizeBy: none
+		sourceColumn: constructor_id
+
+		annotation SummarizationSetBy = Automatic
+
+	column constructor_name
+		dataType: string
+		lineageTag: cfc9c40a-d70e-40bb-8a2b-bf4e4ce8e100
+		summarizeBy: none
+		sourceColumn: constructor_name
+
+		annotation SummarizationSetBy = Automatic
+
+	column nationality
+		dataType: string
+		lineageTag: 657c2d91-1ef6-416a-bd11-2046990bbcf6
+		summarizeBy: none
+		sourceColumn: nationality
+
+		annotation SummarizationSetBy = Automatic
+
+	partition dim_constructors = m
+		mode: import
+		queryGroup: dim
+		source =
+				let
+				    Source = constructors,
+				    #"Removed Columns" = Table.RemoveColumns(Source,{"constructorRef", "url"})
+				in
+				    #"Removed Columns"
+
+	annotation PBI_NavigationStepName = Navigation
+
+	annotation PBI_ResultType = Table
+

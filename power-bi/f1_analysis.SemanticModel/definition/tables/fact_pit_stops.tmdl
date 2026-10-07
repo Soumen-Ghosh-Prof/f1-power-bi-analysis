@@ -1,0 +1,70 @@
+table fact_pit_stops
+	lineageTag: d75d4eb7-f410-476a-a531-a5f4ac162e80
+
+	column race_id
+		dataType: int64
+		formatString: 0
+		lineageTag: 2f6ce63f-8e06-4b67-a43d-3fda89a51261
+		summarizeBy: none
+		sourceColumn: race_id
+
+		annotation SummarizationSetBy = Automatic
+
+	column driver_id
+		dataType: int64
+		formatString: 0
+		lineageTag: 5c03307e-2414-4435-95e9-4dc42cefe4cb
+		summarizeBy: none
+		sourceColumn: driver_id
+
+		annotation SummarizationSetBy = Automatic
+
+	column stop
+		dataType: int64
+		formatString: 0
+		lineageTag: 0778e96e-3742-45d0-9f0b-6757904c918a
+		summarizeBy: sum
+		sourceColumn: stop
+
+		annotation SummarizationSetBy = Automatic
+
+	column lap
+		dataType: int64
+		formatString: 0
+		lineageTag: bafa68b1-a55d-4b2f-ad00-f800a4dbb750
+		summarizeBy: sum
+		sourceColumn: lap
+
+		annotation SummarizationSetBy = Automatic
+
+	column duration
+		dataType: string
+		lineageTag: 3c4617ba-87ec-433b-85c6-a79e1b73ba19
+		summarizeBy: none
+		sourceColumn: duration
+
+		annotation SummarizationSetBy = Automatic
+
+	column milliseconds
+		dataType: int64
+		formatString: 0
+		lineageTag: ef93db75-2454-4027-b485-7991effae8c5
+		summarizeBy: sum
+		sourceColumn: milliseconds
+
+		annotation SummarizationSetBy = Automatic
+
+	partition fact_pit_stops = m
+		mode: import
+		queryGroup: fact
+		source =
+				let
+				    Source = pit_stops,
+				    #"Removed Columns" = Table.RemoveColumns(Source,{"time"})
+				in
+				    #"Removed Columns"
+
+	annotation PBI_NavigationStepName = Navigation
+
+	annotation PBI_ResultType = Table
+

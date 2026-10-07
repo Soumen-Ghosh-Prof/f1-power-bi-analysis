@@ -1,0 +1,157 @@
+table fact_sprint_results
+	lineageTag: 86cbb50d-908b-408d-941e-dca02dc06fc3
+
+	column result_id
+		dataType: int64
+		formatString: 0
+		lineageTag: c0be0a5c-41d3-451b-b468-e7a0bef1bf95
+		summarizeBy: sum
+		sourceColumn: result_id
+
+		annotation SummarizationSetBy = Automatic
+
+	column race_id
+		dataType: int64
+		formatString: 0
+		lineageTag: 2bbeabdb-0f0f-4c28-846a-bacd1c41f51b
+		summarizeBy: none
+		sourceColumn: race_id
+
+		annotation SummarizationSetBy = Automatic
+
+	column driver_id
+		dataType: int64
+		formatString: 0
+		lineageTag: a26da5dd-e6b6-4d28-91eb-852971f9647b
+		summarizeBy: none
+		sourceColumn: driver_id
+
+		annotation SummarizationSetBy = Automatic
+
+	column consturctor_id
+		dataType: int64
+		formatString: 0
+		lineageTag: 3565eb33-e7f0-4d4c-a101-49c6081915f2
+		summarizeBy: none
+		sourceColumn: consturctor_id
+
+		annotation SummarizationSetBy = Automatic
+
+	column car_number
+		dataType: string
+		lineageTag: 23929564-3c82-49ac-95f1-a9b1c93dd4c1
+		summarizeBy: none
+		sourceColumn: car_number
+
+		annotation SummarizationSetBy = Automatic
+
+	column starting_position
+		dataType: int64
+		formatString: 0
+		lineageTag: e8d2969f-3df3-45f6-b119-2077c41867c2
+		summarizeBy: sum
+		sourceColumn: starting_position
+
+		annotation SummarizationSetBy = Automatic
+
+	column position_text
+		dataType: string
+		lineageTag: 7d991f53-e6d2-423a-b716-7e98e4b6a998
+		summarizeBy: none
+		sourceColumn: position_text
+
+		annotation SummarizationSetBy = Automatic
+
+	column position_order
+		dataType: int64
+		formatString: 0
+		lineageTag: 85000855-5be8-4353-a60f-0d14a2c5a4bc
+		summarizeBy: sum
+		sourceColumn: position_order
+
+		annotation SummarizationSetBy = Automatic
+
+	column points
+		dataType: double
+		lineageTag: 22b3a71c-e185-4095-aadc-2543c077b8ee
+		summarizeBy: sum
+		sourceColumn: points
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column laps
+		dataType: int64
+		formatString: 0
+		lineageTag: a25846f7-7d81-426b-a38c-b2e3749260c1
+		summarizeBy: sum
+		sourceColumn: laps
+
+		annotation SummarizationSetBy = Automatic
+
+	column time
+		dataType: string
+		lineageTag: 2c2b6735-ebbe-4630-b91c-9dd9328d81ff
+		summarizeBy: none
+		sourceColumn: time
+
+		annotation SummarizationSetBy = Automatic
+
+	column milliseconds
+		dataType: int64
+		formatString: 0
+		lineageTag: a58d151f-b8e1-4ca2-ab2d-a90a79998167
+		summarizeBy: sum
+		sourceColumn: milliseconds
+
+		annotation SummarizationSetBy = Automatic
+
+	column fastest_lap
+		dataType: int64
+		formatString: 0
+		lineageTag: 172cd740-72ed-424a-bc04-c4d08306d761
+		summarizeBy: sum
+		sourceColumn: fastest_lap
+
+		annotation SummarizationSetBy = Automatic
+
+	column fastest_lap_time
+		dataType: string
+		lineageTag: fe59aff9-3ad3-43a2-b95c-fb70a01dfcf3
+		summarizeBy: none
+		sourceColumn: fastest_lap_time
+
+		annotation SummarizationSetBy = Automatic
+
+	column status_id
+		dataType: int64
+		formatString: 0
+		lineageTag: eead738f-dd36-4c9b-8a6e-04fabb61fe48
+		summarizeBy: none
+		sourceColumn: status_id
+
+		annotation SummarizationSetBy = Automatic
+
+	column finishing_position
+		dataType: int64
+		formatString: 0
+		lineageTag: ed513bc8-398c-405d-8289-e2989c2e853c
+		summarizeBy: sum
+		sourceColumn: finishing_position
+
+		annotation SummarizationSetBy = Automatic
+
+	partition fact_sprint_results = m
+		mode: import
+		queryGroup: fact
+		source =
+				let
+				    Source = sprint_results
+				in
+				    Source
+
+	annotation PBI_NavigationStepName = Navigation
+
+	annotation PBI_ResultType = Table
+

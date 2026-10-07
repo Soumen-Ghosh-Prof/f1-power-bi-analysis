@@ -1,0 +1,61 @@
+relationship 67c81ed6-a6ad-4fd3-ada4-123ac3345302
+	joinOnDateBehavior: datePartOnly
+	fromColumn: dim_drivers.dob
+	toColumn: LocalDateTable_eb4695cf-eeb1-4940-8acb-2ac7099fa849.Date
+
+relationship a7532cea-9ce9-d68c-98b7-1843dcd119dc
+	fromColumn: fact_results.consturctor_id
+	toColumn: dim_constructors.constructor_id
+
+relationship a7f83034-62e2-9ac7-a71c-e673ddab7615
+	fromColumn: fact_results.driver_id
+	toColumn: dim_drivers.driver_id
+
+relationship 49086270-24f9-b29b-1cd6-500842f39ccc
+	fromColumn: fact_results.race_id
+	toColumn: dim_races.race_id
+
+relationship f3001187-f9a7-d693-6b48-315925f49730
+	fromColumn: fact_results.status_id
+	toColumn: dim_status.status_id
+
+relationship 5f5b1bb1-8025-b3a7-2202-e19852e9c1b1
+	fromColumn: dim_races.circuit_id
+	toColumn: dim_circuits.circuit_id
+
+relationship f9e2030b-7ba1-b1d9-0415-3c2c804e3cfd
+	fromColumn: dim_races.date
+	toColumn: dim_date.date
+
+relationship 08049291-6e6b-b46c-7090-0189984ccc9c
+	fromColumn: fact_lap_times.race_id
+	toColumn: dim_races.race_id
+
+relationship 63487656-d8d0-2290-8f13-6fa0aef59ba3
+	fromColumn: fact_lap_times.driver_id
+	toColumn: dim_drivers.driver_id
+
+relationship 4f3a5530-b840-addc-b206-6c1ffcc612a5
+	fromColumn: fact_pit_stops.race_id
+	toColumn: dim_races.race_id
+
+relationship c3e16f98-fba1-dd08-9982-1471233d2922
+	fromColumn: fact_pit_stops.driver_id
+	toColumn: dim_drivers.driver_id
+
+relationship 32b8ed08-4b6f-d9af-ebcc-78976bd3c082
+	fromColumn: fact_sprint_results.driver_id
+	toColumn: dim_drivers.driver_id
+
+relationship 9f3e2f5e-83c6-9b4a-9f9a-53de12ce3c67
+	fromColumn: fact_sprint_results.consturctor_id
+	toColumn: dim_constructors.constructor_id
+
+relationship 92acfaa4-c752-8f56-bf99-ae56cda8be71
+	fromColumn: fact_sprint_results.status_id
+	toColumn: dim_status.status_id
+
+relationship 3c55f093-5b0d-ea7e-12a5-cf925a669b3a
+	fromColumn: fact_sprint_results.race_id
+	toColumn: dim_races.race_id
+

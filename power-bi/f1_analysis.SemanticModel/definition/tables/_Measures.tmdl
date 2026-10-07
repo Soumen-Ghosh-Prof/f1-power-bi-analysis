@@ -1,0 +1,173 @@
+table _Measures
+	lineageTag: 8c67ff10-6542-41f3-9e94-b9e693aba0d6
+
+	measure 'Total Points' = SUM(fact_results[points])
+		lineageTag: c58cc688-9480-4031-ba7e-1e23239c25fd
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure 'Race Entries' = COUNTROWS(fact_results)
+		formatString: 0
+		lineageTag: bde94572-dab1-4426-844d-2f871e2f9133
+
+	measure 'Race Starts' = CALCULATE([Race Entries], fact_results[laps] > 0 || fact_results[starting_position] > 0)
+		formatString: 0
+		lineageTag: 396bc376-bc77-42b1-bd88-d155ca40e4d5
+
+	measure 'Seasons Contested' = CALCULATE(DISTINCTCOUNT(dim_races[year]), fact_results[laps] > 0 || fact_results[starting_position] > 0, CROSSFILTER(fact_results[race_id], dim_races[race_id], Both))
+		formatString: 0
+		lineageTag: 42fbae50-ad1b-4d04-9512-dfd88f996825
+
+	measure 'Circuit Visited' = CALCULATE(DISTINCTCOUNT(dim_races[circuit_id]), fact_results[laps] > 0 || fact_results[starting_position] > 0, CROSSFILTER(fact_results[race_id], dim_races[race_id], Both))
+		formatString: 0
+		lineageTag: 3b836623-547a-414f-8b7e-98afb50ca391
+
+	measure 'Sprint Points' = SUM(fact_sprint_results[points])
+		lineageTag: 41867108-205c-47c0-aaec-897fe40c6b47
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure 'Championship Points' = [Total Points] + COALESCE([Sprint Points], 0)
+		lineageTag: 9a320813-f11d-44e3-a954-13e7a99cd197
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure 'Race Wins' = CALCULATE([Race Starts], fact_results[finishing_position] = 1)
+		formatString: 0
+		lineageTag: 706f9c31-c7ee-4d3c-b0a5-beb62d86a67d
+
+	measure Podiums = CALCULATE([Race Starts], fact_results[finishing_position] <= 3)
+		formatString: 0
+		lineageTag: c43a6b8c-7100-4016-8b48-def0ca57b537
+
+	measure 'Points Finishes' = CALCULATE([Race Starts], fact_results[points] > 0)
+		formatString: 0
+		lineageTag: 31bb9fb5-2538-4dd3-82ec-ca2965acebcc
+
+	measure 'Top 10 Finishes' = CALCULATE([Race Starts], fact_results[finishing_position] <= 10)
+		formatString: 0
+		lineageTag: 13a56fdc-852a-4fc6-917b-169ed4cd571d
+
+	measure 'Pole Positions' = CALCULATE([Race Entries], fact_results[starting_position] = 1)
+		formatString: 0
+		lineageTag: d68bc3ec-d679-4a7f-b0f0-621a8d99902e
+
+	measure 'First Row Starts' = CALCULATE([Race Entries], fact_results[starting_position] IN {1,2})
+		formatString: 0
+		lineageTag: cf8854ad-7788-421c-945a-1ac429be0ce4
+
+	measure 'Avg Starting Position' = CALCULATE(AVERAGE(fact_results[starting_position]), fact_results[starting_position] > 0)
+		formatString: 0.0
+		lineageTag: 01446da3-1a28-4b8f-8277-c5bd0de2557e
+
+	measure 'Avg Net Positions Gained' = AVERAGEX(FILTER(fact_results, fact_results[starting_position] > 0 && (RELATED(dim_status[status]) = "Finished" || CONTAINSSTRING(RELATED(dim_status[status]), "Lap"))), fact_results[starting_position] - fact_results[finishing_position])
+		lineageTag: 5e7fecdc-e531-49a8-8676-a8deb1acac24
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure 'Win %' = DIVIDE([Race Wins], [Race Starts])
+		formatString: 0.00%;-0.00%;0.00%
+		lineageTag: f3d84336-6a33-4c89-89f2-dd850e1ad4d7
+
+	measure 'Podium %' = DIVIDE([Podiums], [Race Starts])
+		formatString: 0.00%;-0.00%;0.00%
+		lineageTag: 23e97531-d459-457d-99d9-8f016df5bec2
+
+	measure 'Points Finishes %' = DIVIDE([Points Finishes], [Race Starts])
+		formatString: 0.00%;-0.00%;0.00%
+		lineageTag: e463b422-32af-4496-8c6b-42fdd043b2a2
+
+	measure 'Pole-to-Win %' = DIVIDE(CALCULATE([Pole Positions], fact_results[finishing_position] = 1), [Pole Positions])
+		formatString: 0.00%;-0.00%;0.00%
+		lineageTag: 49c2eef7-a101-4972-acb5-a15a6b4ae17d
+
+	measure 'First-Row Win %' = DIVIDE(CALCULATE([First Row Starts], fact_results[finishing_position] = 1), [First Row Starts])
+		formatString: 0.00%;-0.00%;0.00%
+		lineageTag: d7bb9734-5a98-4d50-b530-6fc30a7b79fa
+
+	measure 'Classified Finishes' = CALCULATE([Race Starts], NOT(ISBLANK(fact_results[finishing_position])))
+		formatString: 0
+		lineageTag: e364610e-b6c5-4574-a858-6fd1cbcf2f8f
+
+	measure DNFs = CALCULATE([Race Starts], ISBLANK(fact_results[finishing_position]))
+		formatString: 0
+		lineageTag: 47c9e93a-e57a-4b28-bfb6-28d5adbf67da
+
+	measure 'DNF %' = DIVIDE([DNFs], [Race Starts])
+		formatString: 0.00%;-0.00%;0.00%
+		lineageTag: 19738a40-10d6-4b7e-b5ef-e76aa7e4cd6d
+
+	measure 'Mechanical DNFs' = CALCULATE([DNFs], dim_status[status_category] = "Mechanical")
+		formatString: 0
+		lineageTag: 30a0e7db-10bc-418d-bd29-ab24840515f1
+
+	measure 'Incident DNFs' = CALCULATE([DNFs], dim_status[status_category] = "Incident")
+		formatString: 0
+		lineageTag: bca60066-ae65-4d3f-8943-1f25033cb4a1
+
+	measure 'Mechanical DNF %' = DIVIDE([Mechanical DNFs], [Race Starts])
+		formatString: 0.00%;-0.00%;0.00%
+		lineageTag: 2403c2ff-6db4-404f-b5fc-362ba1087455
+
+	measure 'Other DNFs' = CALCULATE([DNFs], NOT(dim_status[status_category] IN {"Mechanical", "Incident"}))
+		formatString: 0
+		lineageTag: fd10b258-18be-4ee5-8031-70c206638f82
+
+	measure 'Incident DNF %' = DIVIDE([Incident DNFs], [Race Starts])
+		formatString: 0.00%;-0.00%;0.00%
+		lineageTag: 4025b2db-4b77-4397-a645-1fe4766faeae
+
+	measure 'Other DNF %' = DIVIDE([Other DNFs], [Race Starts])
+		formatString: 0.00%;-0.00%;0.00%
+		lineageTag: 0fb75965-7d92-4b67-8a50-6af6956782bc
+
+	measure 'Total Pit Stops' = COUNTROWS(fact_pit_stops)
+		formatString: 0
+		lineageTag: 709e8a4d-2537-43bd-98d5-b0ec60ce7f42
+
+	measure 'Avg Pit Stop Time' = DIVIDE(CALCULATE(AVERAGE(fact_pit_stops[milliseconds]), fact_pit_stops[milliseconds] <= 45000), 1000)
+		formatString: 0.000
+		lineageTag: 778d4ec4-6b25-4f5e-ab02-d57b780f4a23
+
+	measure 'Fastest Pit Stop' = DIVIDE(MIN(fact_pit_stops[milliseconds]), 1000)
+		formatString: 0.000
+		lineageTag: 9f830dae-f5db-498f-8012-557d9da89ca0
+
+	measure 'Fastest Laps' = CALCULATE(COUNTROWS(fact_results), fact_results[fastest_lap_rank] = 1)
+		formatString: 0
+		lineageTag: e6ef8181-287f-4de7-a9be-5558abf9467a
+
+	measure 'Fastest Lap %' = DIVIDE([Fastest Laps], [Race Starts])
+		formatString: 0.00%;-0.00%;0.00%
+		lineageTag: c0135e1c-6723-4eae-8c6f-7367c3033374
+
+	measure 'Avg Lap Time (s)' = DIVIDE(AVERAGE(fact_lap_times[milliseconds]), 1000)
+		formatString: 0.000
+		lineageTag: da5f2dc9-4bea-4bfb-9a93-6c04dc74b4ef
+
+	measure 'Fastest Personal Lap (s)' = DIVIDE(MIN(fact_lap_times[milliseconds]), 1000)
+		formatString: 0.000
+		lineageTag: ab5edf50-edf7-4d29-ae93-eb5899055e95
+
+	measure 'Max Avg Lap Speed (km/h)' = MAX(fact_results[fastest_lap_avg_speed])
+		formatString: 0.0
+		lineageTag: 33634b4d-e5ae-4f0f-b74f-cc009e40b82b
+
+	measure 'Avg Lap Speed (km/h)' = AVERAGE(fact_results[fastest_lap_avg_speed])
+		formatString: 0.0
+		lineageTag: 64a8702e-52bc-407c-b1d9-dcfc2666c08f
+
+	partition _Measures = m
+		mode: import
+		source =
+				let
+				    Source = Table.FromRows(Json.Document(Binary.Decompress(Binary.FromText("i44FAA==", BinaryEncoding.Base64), Compression.Deflate)), let _t = ((type nullable text) meta [Serialized.Text = true]) in type table [Column1 = _t]),
+				    #"Changed Type" = Table.TransformColumnTypes(Source,{{"Column1", type text}}),
+				    #"Removed Columns" = Table.RemoveColumns(#"Changed Type",{"Column1"})
+				in
+				    #"Removed Columns"
+
+	annotation PBI_ResultType = Table
+
+	annotation PBI_NavigationStepName = Navigation
+

@@ -1,0 +1,66 @@
+table dim_drivers
+	lineageTag: 898c6c5b-271a-4a82-98e7-52a0dab88517
+
+	column driver_id
+		dataType: int64
+		formatString: 0
+		lineageTag: 4fe05d89-6aa9-4970-a3b7-2f92699d0cf8
+		summarizeBy: none
+		sourceColumn: driver_id
+
+		annotation SummarizationSetBy = Automatic
+
+	column driver_ref
+		dataType: string
+		lineageTag: bf666eae-0531-4fd1-8578-8ebdf40fc1c7
+		summarizeBy: none
+		sourceColumn: driver_ref
+
+		annotation SummarizationSetBy = Automatic
+
+	column driver_name
+		dataType: string
+		lineageTag: f0363bd8-ed56-4477-b84d-7f0bbe527202
+		summarizeBy: none
+		sourceColumn: driver_name
+
+		annotation SummarizationSetBy = Automatic
+
+	column dob
+		dataType: dateTime
+		formatString: Long Date
+		lineageTag: 684e670e-f770-4f34-9a2a-17e793f55b4a
+		summarizeBy: none
+		sourceColumn: dob
+
+		variation Variation
+			isDefault
+			relationship: 67c81ed6-a6ad-4fd3-ada4-123ac3345302
+			defaultHierarchy: LocalDateTable_eb4695cf-eeb1-4940-8acb-2ac7099fa849.'Date Hierarchy'
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation UnderlyingDateTimeDataType = Date
+
+	column nationality
+		dataType: string
+		lineageTag: 436d20ca-6f32-4c9b-be63-cbdd3072e07b
+		summarizeBy: none
+		sourceColumn: nationality
+
+		annotation SummarizationSetBy = Automatic
+
+	partition dim_drivers = m
+		mode: import
+		queryGroup: dim
+		source =
+				let
+				    Source = drivers,
+				    #"Removed Columns" = Table.RemoveColumns(Source,{"number", "code", "url"})
+				in
+				    #"Removed Columns"
+
+	annotation PBI_NavigationStepName = Navigation
+
+	annotation PBI_ResultType = Table
+

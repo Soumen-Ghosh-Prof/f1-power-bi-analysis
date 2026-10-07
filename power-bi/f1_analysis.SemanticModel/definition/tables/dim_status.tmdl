@@ -1,0 +1,41 @@
+table dim_status
+	lineageTag: c84b321b-b61b-4baf-81c7-bd9c8d2f3540
+
+	column status_id
+		dataType: int64
+		formatString: 0
+		lineageTag: d89ec9e0-fd20-495e-870f-2fa99bd59558
+		summarizeBy: none
+		sourceColumn: status_id
+
+		annotation SummarizationSetBy = Automatic
+
+	column status
+		dataType: string
+		lineageTag: a7d9f3b3-a92e-45aa-87a0-c1e46b85f080
+		summarizeBy: none
+		sourceColumn: status
+
+		annotation SummarizationSetBy = Automatic
+
+	column status_category
+		dataType: string
+		lineageTag: 57f582bc-7800-45ba-b3ef-9e74992de08e
+		summarizeBy: none
+		sourceColumn: status_category
+
+		annotation SummarizationSetBy = Automatic
+
+	partition dim_status = m
+		mode: import
+		queryGroup: dim
+		source =
+				let
+				    Source = status
+				in
+				    Source
+
+	annotation PBI_NavigationStepName = Navigation
+
+	annotation PBI_ResultType = Table
+

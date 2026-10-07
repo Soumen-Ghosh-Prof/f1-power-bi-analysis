@@ -1,0 +1,43 @@
+model Model
+	culture: en-IN
+	defaultPowerBIDataSourceVersion: powerBI_V3
+	sourceQueryCulture: en-IN
+	valueFilterBehavior: independent
+	dataAccessOptions
+		legacyRedirects
+		returnErrorValuesAsNull
+
+queryGroup staging
+
+	annotation PBI_QueryGroupOrder = 0
+
+queryGroup fact
+
+	annotation PBI_QueryGroupOrder = 1
+
+queryGroup dim
+
+	annotation PBI_QueryGroupOrder = 2
+
+annotation __PBI_TimeIntelligenceEnabled = 1
+
+annotation PBI_QueryOrder = ["circuits","constructor_results","constructor_standings","constructors","driver_standings","drivers","lap_times","pit_stops","qualifying","races","results","seasons","sprint_results","status","fact_results","fact_lap_times","fact_sprint_results","fact_pit_stops","dim_races","dim_circuits","dim_constructors","dim_drivers","dim_status","_Measures"]
+
+annotation PBI_ProTooling = ["DevMode"]
+
+ref table fact_results
+ref table fact_lap_times
+ref table fact_pit_stops
+ref table dim_races
+ref table DateTableTemplate_9ffe71b5-bfae-4ca0-bac9-fbdac453eb53
+ref table dim_circuits
+ref table dim_constructors
+ref table dim_drivers
+ref table LocalDateTable_eb4695cf-eeb1-4940-8acb-2ac7099fa849
+ref table dim_status
+ref table fact_sprint_results
+ref table dim_date
+ref table _Measures
+
+ref cultureInfo en-IN
+

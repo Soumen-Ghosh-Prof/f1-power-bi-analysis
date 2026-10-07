@@ -1,0 +1,74 @@
+table dim_races
+	lineageTag: a83196d1-1d67-45b3-9097-bbece5663375
+
+	column race_id
+		dataType: int64
+		formatString: 0
+		lineageTag: 8fbf5614-9053-41db-a717-18a0eac3d674
+		summarizeBy: none
+		sourceColumn: race_id
+
+		annotation SummarizationSetBy = Automatic
+
+	column year
+		dataType: int64
+		formatString: 0
+		lineageTag: dc2f11a3-2892-4885-836e-7304ceb6a238
+		summarizeBy: sum
+		sourceColumn: year
+
+		annotation SummarizationSetBy = Automatic
+
+	column round
+		dataType: int64
+		formatString: 0
+		lineageTag: 916aa564-eb05-4579-8131-b46d0afda81f
+		summarizeBy: sum
+		sourceColumn: round
+
+		annotation SummarizationSetBy = Automatic
+
+	column circuit_id
+		dataType: int64
+		formatString: 0
+		lineageTag: 98054e80-4e4e-4e3f-bf4f-6678cec69540
+		summarizeBy: none
+		sourceColumn: circuit_id
+
+		annotation SummarizationSetBy = Automatic
+
+	column race_name
+		dataType: string
+		lineageTag: b559ea09-6bba-4f8d-9365-c920fd3d2eb2
+		summarizeBy: none
+		sourceColumn: race_name
+
+		annotation SummarizationSetBy = Automatic
+
+	column date
+		dataType: dateTime
+		formatString: yyyy-mm-dd
+		lineageTag: 8b603e48-6a94-4dbd-8ab2-d3717b453676
+		summarizeBy: none
+		sourceColumn: date
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation UnderlyingDateTimeDataType = Date
+
+		annotation PBI_FormatHint = {"isDateTimeCustom":true}
+
+	partition dim_races = m
+		mode: import
+		queryGroup: dim
+		source =
+				let
+				    Source = races,
+				    #"Removed Columns" = Table.RemoveColumns(Source,{"time", "url", "fp1_date", "fp1_time", "fp2_date", "fp2_time", "fp3_date", "fp3_time", "quali_date", "quali_time", "sprint_date", "sprint_time"})
+				in
+				    #"Removed Columns"
+
+	annotation PBI_NavigationStepName = Navigation
+
+	annotation PBI_ResultType = Table
+
