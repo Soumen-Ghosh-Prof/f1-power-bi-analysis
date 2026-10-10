@@ -4,34 +4,15 @@
   "position": {
     "x": 965,
     "y": 665,
-    "z": 5,
+    "z": 5000,
     "height": 400,
     "width": 945,
-    "tabOrder": 5
+    "tabOrder": 5000
   },
   "visual": {
-    "visualType": "hundredPercentStackedAreaChart",
+    "visualType": "donutChart",
     "query": {
       "queryState": {
-        "Category": {
-          "projections": [
-            {
-              "field": {
-                "Column": {
-                  "Expression": {
-                    "SourceRef": {
-                      "Entity": "dim_date"
-                    }
-                  },
-                  "Property": "decade"
-                }
-              },
-              "queryRef": "dim_date.decade",
-              "nativeQueryRef": "decade",
-              "active": true
-            }
-          ]
-        },
         "Y": {
           "projections": [
             {
@@ -42,25 +23,11 @@
                       "Entity": "_Measures"
                     }
                   },
-                  "Property": "Classified Finishes"
+                  "Property": "Other DNFs"
                 }
               },
-              "queryRef": "_Measures.Classified Finishes",
-              "nativeQueryRef": "Classified Finishes"
-            },
-            {
-              "field": {
-                "Measure": {
-                  "Expression": {
-                    "SourceRef": {
-                      "Entity": "_Measures"
-                    }
-                  },
-                  "Property": "Mechanical DNFs"
-                }
-              },
-              "queryRef": "_Measures.Mechanical DNFs",
-              "nativeQueryRef": "Mechanical DNFs"
+              "queryRef": "_Measures.Other DNFs",
+              "nativeQueryRef": "Other DNFs"
             },
             {
               "field": {
@@ -84,11 +51,11 @@
                       "Entity": "_Measures"
                     }
                   },
-                  "Property": "Other DNFs"
+                  "Property": "Mechanical DNFs"
                 }
               },
-              "queryRef": "_Measures.Other DNFs",
-              "nativeQueryRef": "Other DNFs"
+              "queryRef": "_Measures.Mechanical DNFs",
+              "nativeQueryRef": "Mechanical DNFs"
             }
           ]
         }
@@ -97,109 +64,32 @@
         "sort": [
           {
             "field": {
-              "Column": {
+              "Measure": {
                 "Expression": {
                   "SourceRef": {
-                    "Entity": "dim_date"
+                    "Entity": "_Measures"
                   }
                 },
-                "Property": "decade"
+                "Property": "Other DNFs"
               }
             },
-            "direction": "Ascending"
+            "direction": "Descending"
           }
-        ]
+        ],
+        "isDefaultSort": true
       }
     },
     "objects": {
-      "valueAxis": [
+      "dataPoint": [
         {
           "properties": {
-            "show": {
+            "borderShow": {
               "expr": {
                 "Literal": {
                   "Value": "false"
                 }
               }
             }
-          }
-        }
-      ],
-      "categoryAxis": [
-        {
-          "properties": {
-            "fontSize": {
-              "expr": {
-                "Literal": {
-                  "Value": "12D"
-                }
-              }
-            },
-            "labelColor": {
-              "solid": {
-                "color": {
-                  "expr": {
-                    "Literal": {
-                      "Value": "'#FFFFFF'"
-                    }
-                  }
-                }
-              }
-            }
-          }
-        }
-      ],
-      "lineStyles": [
-        {
-          "properties": {
-            "strokeWidth": {
-              "expr": {
-                "Literal": {
-                  "Value": "1D"
-                }
-              }
-            },
-            "areaShow": {
-              "expr": {
-                "Literal": {
-                  "Value": "true"
-                }
-              }
-            }
-          }
-        },
-        {
-          "properties": {
-            "strokeTransparency": {
-              "expr": {
-                "Literal": {
-                  "Value": "0D"
-                }
-              }
-            }
-          },
-          "selector": {
-            "metadata": "_Measures.Classified Finishes"
-          }
-        }
-      ],
-      "dataPoint": [
-        {
-          "properties": {
-            "fill": {
-              "solid": {
-                "color": {
-                  "expr": {
-                    "Literal": {
-                      "Value": "'#10B981'"
-                    }
-                  }
-                }
-              }
-            }
-          },
-          "selector": {
-            "metadata": "_Measures.Classified Finishes"
           }
         },
         {
@@ -255,17 +145,6 @@
           "selector": {
             "metadata": "_Measures.Other DNFs"
           }
-        },
-        {
-          "properties": {
-            "transparency": {
-              "expr": {
-                "Literal": {
-                  "Value": "20D"
-                }
-              }
-            }
-          }
         }
       ],
       "labels": [
@@ -274,27 +153,40 @@
             "show": {
               "expr": {
                 "Literal": {
-                  "Value": "false"
-                }
-              }
-            }
-          }
-        }
-      ],
-      "seriesLabels": [
-        {
-          "properties": {
-            "show": {
-              "expr": {
-                "Literal": {
-                  "Value": "false"
+                  "Value": "true"
                 }
               }
             },
-            "seriesPosition": {
+            "labelStyle": {
               "expr": {
                 "Literal": {
-                  "Value": "'Left'"
+                  "Value": "'Category, percent of total'"
+                }
+              }
+            },
+            "fontSize": {
+              "expr": {
+                "Literal": {
+                  "Value": "12D"
+                }
+              }
+            },
+            "color": {
+              "solid": {
+                "color": {
+                  "expr": {
+                    "ThemeDataColor": {
+                      "ColorId": 0,
+                      "Percent": 0
+                    }
+                  }
+                }
+              }
+            },
+            "labelDisplayUnits": {
+              "expr": {
+                "Literal": {
+                  "Value": "1D"
                 }
               }
             }
@@ -326,6 +218,77 @@
               "expr": {
                 "Literal": {
                   "Value": "12D"
+                }
+              }
+            },
+            "show": {
+              "expr": {
+                "Literal": {
+                  "Value": "false"
+                }
+              }
+            }
+          }
+        }
+      ],
+      "slices": [
+        {
+          "properties": {
+            "innerRadiusRatio": {
+              "expr": {
+                "Literal": {
+                  "Value": "50L"
+                }
+              }
+            }
+          }
+        }
+      ],
+      "value": [
+        {
+          "properties": {
+            "fontColor": {
+              "solid": {
+                "color": {
+                  "expr": {
+                    "ThemeDataColor": {
+                      "ColorId": 0,
+                      "Percent": 0
+                    }
+                  }
+                }
+              }
+            },
+            "show": {
+              "expr": {
+                "Literal": {
+                  "Value": "true"
+                }
+              }
+            }
+          }
+        }
+      ],
+      "label": [
+        {
+          "properties": {
+            "show": {
+              "expr": {
+                "Literal": {
+                  "Value": "false"
+                }
+              }
+            }
+          }
+        }
+      ],
+      "centerValue": [
+        {
+          "properties": {
+            "show": {
+              "expr": {
+                "Literal": {
+                  "Value": "false"
                 }
               }
             }
@@ -385,6 +348,13 @@
                   }
                 }
               }
+            },
+            "show": {
+              "expr": {
+                "Literal": {
+                  "Value": "false"
+                }
+              }
             }
           }
         }
@@ -412,7 +382,18 @@
             "show": {
               "expr": {
                 "Literal": {
-                  "Value": "false"
+                  "Value": "true"
+                }
+              }
+            },
+            "color": {
+              "solid": {
+                "color": {
+                  "expr": {
+                    "Literal": {
+                      "Value": "'#2A3245'"
+                    }
+                  }
                 }
               }
             }

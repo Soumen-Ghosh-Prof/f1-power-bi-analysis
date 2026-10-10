@@ -35,7 +35,7 @@ table _Measures
 		formatString: #,0
 		lineageTag: 706f9c31-c7ee-4d3c-b0a5-beb62d86a67d
 
-	measure Podiums = CALCULATE([Race Starts], fact_results[finishing_position] <= 3)
+	measure Podiums = CALCULATE([Race Starts], fact_results[finishing_position] <= 3, NOT(ISBLANK(fact_results[finishing_position])))
 		formatString: #,0
 		lineageTag: c43a6b8c-7100-4016-8b48-def0ca57b537
 
@@ -43,12 +43,12 @@ table _Measures
 		formatString: 0
 		lineageTag: 31bb9fb5-2538-4dd3-82ec-ca2965acebcc
 
-	measure 'Top 10 Finishes' = CALCULATE([Race Starts], fact_results[finishing_position] <= 10)
+	measure 'Top 10 Finishes' = CALCULATE([Race Starts], fact_results[finishing_position] <= 10, NOT(ISBLANK(fact_results[finishing_position])))
 		formatString: 0
 		lineageTag: 13a56fdc-852a-4fc6-917b-169ed4cd571d
 
 	measure 'Pole Positions' = CALCULATE([Race Entries], fact_results[starting_position] = 1)
-		formatString: 0
+		formatString: #,0
 		lineageTag: d68bc3ec-d679-4a7f-b0f0-621a8d99902e
 
 	measure 'First Row Starts' = CALCULATE([Race Entries], fact_results[starting_position] IN {1,2})
@@ -104,7 +104,7 @@ table _Measures
 		formatString: 0
 		lineageTag: bca60066-ae65-4d3f-8943-1f25033cb4a1
 
-	measure 'Mechanical DNF %' = DIVIDE([Mechanical DNFs], [Race Starts])
+	measure 'Mechanical DNF %' = DIVIDE([Mechanical DNFs], [DNFs])
 		formatString: 0.00%;-0.00%;0.00%
 		lineageTag: 2403c2ff-6db4-404f-b5fc-362ba1087455
 
@@ -112,11 +112,11 @@ table _Measures
 		formatString: 0
 		lineageTag: fd10b258-18be-4ee5-8031-70c206638f82
 
-	measure 'Incident DNF %' = DIVIDE([Incident DNFs], [Race Starts])
+	measure 'Incident DNF %' = DIVIDE([Incident DNFs], [DNFs])
 		formatString: 0.00%;-0.00%;0.00%
 		lineageTag: 4025b2db-4b77-4397-a645-1fe4766faeae
 
-	measure 'Other DNF %' = DIVIDE([Other DNFs], [Race Starts])
+	measure 'Other DNF %' = DIVIDE([Other DNFs], [DNFs])
 		formatString: 0.00%;-0.00%;0.00%
 		lineageTag: 0fb75965-7d92-4b67-8a50-6af6956782bc
 
@@ -311,6 +311,46 @@ table _Measures
 	measure 'Avg Finishing Position' = AVERAGEX(FILTER(fact_results, NOT(ISBLANK(fact_results[finishing_position])) && fact_results[finishing_position] > 0), fact_results[finishing_position])
 		formatString: 0.0
 		lineageTag: da072520-0a75-40c6-a65b-cae1370486f6
+
+	measure 'Top Driver With Wins' =
+			
+			VAR DriverSummary = ADDCOLUMNS(VALUES(dim_drivers[driver_name]), "@Wins", [Race Wins])
+			VAR TopRow = TOPN(1, DriverSummary, [@Wins], DESC)
+			VAR BestDriverName = MAXX(TopRow, dim_drivers[driver_name])
+			VAR BestDriverWins = MAXX(TopRow, [@Wins])
+			RETURN IF(BestDriverWins > 0, BestDriverName & " (" & FORMAT(BestDriverWins, "#,##0") & ")", "N/A")
+		lineageTag: 34ca38e9-5ee4-435f-97ba-27f5bc3535f2
+
+	measure 'Top Team With Wins' =
+			
+			VAR TeamSummary = ADDCOLUMNS(VALUES(dim_constructors[constructor_name]), "@Wins", [Race Wins])
+			VAR TopRow = TOPN(1, TeamSummary, [@Wins], DESC)
+			VAR BestTeamName = MAXX(TopRow, dim_constructors[constructor_name])
+			VAR BestTeamWins = MAXX(TopRow, [@Wins])
+			RETURN IF(BestTeamWins > 0, BestTeamName & " (" & FORMAT(BestTeamWins, "#,##0") & ")", "N/A")
+		lineageTag: bd3d1d9e-a826-4607-b013-6a165d4ef767
+
+	measure 'Selected Driver Header' = SELECTEDVALUE(dim_drivers[driver_name], "SELECT A DRIVER")
+		lineageTag: 91ce6c49-c50a-4216-bd4b-dc03a1c7e8a1
+
+	measure 'Selected Team Header' = SELECTEDVALUE(dim_constructors[constructor_name], "SELECT A TEAM")
+		lineageTag: e954cc34-c715-4cca-a444-4189f90021ec
+
+	measure 'Sprint Starts' = CALCULATE(COUNTROWS(fact_sprint_results), fact_sprint_results[laps] > 0 || fact_sprint_results[starting_position] > 0)
+		formatString: #,0
+		lineageTag: aaf54875-de3f-4f59-bca3-ceacf1d99121
+
+	measure 'Sprint Wins' = CALCULATE([Sprint Starts], fact_sprint_results[finishing_position] = 1)
+		formatString: #,0
+		lineageTag: 783a0a33-4ad2-4b59-b73e-a69f0f42b850
+
+	measure 'Sprint Win %' = DIVIDE([Sprint Wins], [Sprint Starts])
+		formatString: 0.00%;-0.00%;0.00%
+		lineageTag: fb175326-6bfb-4198-bc49-7530ad838bcb
+
+	measure Grid-Wins = CALCULATE(COUNTROWS(fact_results), fact_results[finishing_position] = 1)
+		formatString: #,0
+		lineageTag: d3cdb87d-5a36-4721-9340-322de71a4567
 
 	partition _Measures = m
 		mode: import

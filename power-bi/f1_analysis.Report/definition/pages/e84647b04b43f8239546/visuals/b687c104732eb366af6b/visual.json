@@ -4,10 +4,10 @@
   "position": {
     "x": 10,
     "y": 100,
-    "z": 6,
-    "height": 300,
-    "width": 945,
-    "tabOrder": 6
+    "z": 6000,
+    "height": 145,
+    "width": 1900,
+    "tabOrder": 4000
   },
   "visual": {
     "visualType": "cardVisual",
@@ -38,6 +38,21 @@
                       "Entity": "_Measures"
                     }
                   },
+                  "Property": "Race Entries"
+                }
+              },
+              "queryRef": "_Measures.Race Entries",
+              "nativeQueryRef": "RACE ENTRIES",
+              "displayName": "RACE ENTRIES"
+            },
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "_Measures"
+                    }
+                  },
                   "Property": "Classified Finishes"
                 }
               },
@@ -53,12 +68,11 @@
                       "Entity": "_Measures"
                     }
                   },
-                  "Property": "Race Starts"
+                  "Property": "DNFs"
                 }
               },
-              "queryRef": "_Measures.Race Starts",
-              "nativeQueryRef": "RACE STARTS",
-              "displayName": "RACE STARTS"
+              "queryRef": "_Measures.DNFs",
+              "nativeQueryRef": "DNFs"
             },
             {
               "field": {
@@ -68,11 +82,27 @@
                       "Entity": "_Measures"
                     }
                   },
-                  "Property": "DNFs"
+                  "Property": "Top Team With Wins"
                 }
               },
-              "queryRef": "_Measures.DNFs",
-              "nativeQueryRef": "DNFs"
+              "queryRef": "_Measures.Top Team With Wins",
+              "nativeQueryRef": "ERA LEADING TEAM",
+              "displayName": "ERA LEADING TEAM"
+            },
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "_Measures"
+                    }
+                  },
+                  "Property": "Top Driver With Wins"
+                }
+              },
+              "queryRef": "_Measures.Top Driver With Wins",
+              "nativeQueryRef": "ERA LEADING DRIVER",
+              "displayName": "ERA LEADING DRIVER"
             }
           ]
         }
@@ -110,14 +140,14 @@
             "rowCount": {
               "expr": {
                 "Literal": {
-                  "Value": "2L"
+                  "Value": "1L"
                 }
               }
             },
             "columnCount": {
               "expr": {
                 "Literal": {
-                  "Value": "2L"
+                  "Value": "6L"
                 }
               }
             },
@@ -182,14 +212,14 @@
             "fontSize": {
               "expr": {
                 "Literal": {
-                  "Value": "30D"
+                  "Value": "24D"
                 }
               }
             },
             "bold": {
               "expr": {
                 "Literal": {
-                  "Value": "true"
+                  "Value": "false"
                 }
               }
             },
@@ -197,6 +227,13 @@
               "expr": {
                 "Literal": {
                   "Value": "false"
+                }
+              }
+            },
+            "textWrap": {
+              "expr": {
+                "Literal": {
+                  "Value": "true"
                 }
               }
             }
@@ -244,7 +281,7 @@
             }
           },
           "selector": {
-            "metadata": "_Measures.Race Starts"
+            "metadata": "_Measures.DNFs"
           }
         },
         {
@@ -258,7 +295,7 @@
             }
           },
           "selector": {
-            "metadata": "_Measures.DNFs"
+            "metadata": "_Measures.Race Entries"
           }
         }
       ],
@@ -270,7 +307,7 @@
                 "color": {
                   "expr": {
                     "Literal": {
-                      "Value": "'#ffffff'"
+                      "Value": "'#94A3B8'"
                     }
                   }
                 }
@@ -279,7 +316,7 @@
             "fontSize": {
               "expr": {
                 "Literal": {
-                  "Value": "18D"
+                  "Value": "20D"
                 }
               }
             },
@@ -313,7 +350,23 @@
             "show": {
               "expr": {
                 "Literal": {
-                  "Value": "false"
+                  "Value": "true"
+                }
+              }
+            }
+          },
+          "selector": {
+            "id": "default"
+          }
+        }
+      ],
+      "spacing": [
+        {
+          "properties": {
+            "verticalSpacing": {
+              "expr": {
+                "Literal": {
+                  "Value": "3L"
                 }
               }
             }

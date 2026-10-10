@@ -1,10 +1,51 @@
 {
   "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/page/2.1.0/schema.json",
   "name": "73b5addd30da338e3dc5",
-  "displayName": "Constructor Spotlight",
+  "displayName": "Team Spotlight",
   "displayOption": "FitToPage",
   "height": 1080,
   "width": 1920,
+  "filterConfig": {
+    "filters": [
+      {
+        "name": "54e77f70f45afc90e52f",
+        "field": {
+          "Column": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "dim_constructors"
+              }
+            },
+            "Property": "constructor_name"
+          }
+        },
+        "type": "Categorical",
+        "howCreated": "Drillthrough"
+      }
+    ]
+  },
+  "pageBinding": {
+    "name": "e3523eb549ee25dbe8bf",
+    "type": "Drillthrough",
+    "parameters": [
+      {
+        "name": "1375a36eb9b21d3a903b",
+        "boundFilter": "54e77f70f45afc90e52f",
+        "fieldExpr": {
+          "Column": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "dim_constructors"
+              }
+            },
+            "Property": "constructor_name"
+          }
+        }
+      }
+    ],
+    "referenceScope": "CrossReport",
+    "acceptsFilterContext": "None"
+  },
   "objects": {
     "background": [
       {
@@ -30,5 +71,137 @@
         }
       }
     ]
-  }
+  },
+  "visualInteractions": [
+    {
+      "source": "464296968918a18fc888",
+      "target": "e2217784c523c4c96d70",
+      "type": "NoFilter"
+    },
+    {
+      "source": "464296968918a18fc888",
+      "target": "4cca9d368b4c3315f6ec",
+      "type": "HighlightFilter"
+    },
+    {
+      "source": "464296968918a18fc888",
+      "target": "fa4fc220b7eb47a7d35b",
+      "type": "DataFilter"
+    },
+    {
+      "source": "464296968918a18fc888",
+      "target": "0d0c8cee1d95c0aecef2",
+      "type": "NoFilter"
+    },
+    {
+      "source": "fa4fc220b7eb47a7d35b",
+      "target": "4cca9d368b4c3315f6ec",
+      "type": "NoFilter"
+    },
+    {
+      "source": "fa4fc220b7eb47a7d35b",
+      "target": "e2217784c523c4c96d70",
+      "type": "NoFilter"
+    },
+    {
+      "source": "fa4fc220b7eb47a7d35b",
+      "target": "464296968918a18fc888",
+      "type": "NoFilter"
+    },
+    {
+      "source": "fa4fc220b7eb47a7d35b",
+      "target": "0d0c8cee1d95c0aecef2",
+      "type": "NoFilter"
+    },
+    {
+      "source": "e2217784c523c4c96d70",
+      "target": "fa4fc220b7eb47a7d35b",
+      "type": "DataFilter"
+    },
+    {
+      "source": "4cca9d368b4c3315f6ec",
+      "target": "fa4fc220b7eb47a7d35b",
+      "type": "NoFilter"
+    },
+    {
+      "source": "4cca9d368b4c3315f6ec",
+      "target": "464296968918a18fc888",
+      "type": "NoFilter"
+    },
+    {
+      "source": "4cca9d368b4c3315f6ec",
+      "target": "0d0c8cee1d95c0aecef2",
+      "type": "NoFilter"
+    },
+    {
+      "source": "4cca9d368b4c3315f6ec",
+      "target": "e2217784c523c4c96d70",
+      "type": "NoFilter"
+    },
+    {
+      "source": "e2217784c523c4c96d70",
+      "target": "4cca9d368b4c3315f6ec",
+      "type": "DataFilter"
+    },
+    {
+      "source": "e2217784c523c4c96d70",
+      "target": "464296968918a18fc888",
+      "type": "DataFilter"
+    },
+    {
+      "source": "4cca9d368b4c3315f6ec",
+      "target": "6184292bf109337edad9",
+      "type": "NoFilter"
+    },
+    {
+      "source": "fa4fc220b7eb47a7d35b",
+      "target": "6184292bf109337edad9",
+      "type": "NoFilter"
+    },
+    {
+      "source": "6184292bf109337edad9",
+      "target": "4cca9d368b4c3315f6ec",
+      "type": "NoFilter"
+    },
+    {
+      "source": "6184292bf109337edad9",
+      "target": "e2217784c523c4c96d70",
+      "type": "NoFilter"
+    },
+    {
+      "source": "6184292bf109337edad9",
+      "target": "0d0c8cee1d95c0aecef2",
+      "type": "NoFilter"
+    },
+    {
+      "source": "6184292bf109337edad9",
+      "target": "464296968918a18fc888",
+      "type": "NoFilter"
+    },
+    {
+      "source": "6184292bf109337edad9",
+      "target": "fa4fc220b7eb47a7d35b",
+      "type": "NoFilter"
+    },
+    {
+      "source": "464296968918a18fc888",
+      "target": "6184292bf109337edad9",
+      "type": "DataFilter"
+    },
+    {
+      "source": "82ef31426c87537180f6",
+      "target": "4cca9d368b4c3315f6ec",
+      "type": "DataFilter"
+    },
+    {
+      "source": "82ef31426c87537180f6",
+      "target": "fa4fc220b7eb47a7d35b",
+      "type": "DataFilter"
+    },
+    {
+      "source": "82ef31426c87537180f6",
+      "target": "464296968918a18fc888",
+      "type": "DataFilter"
+    }
+  ]
 }

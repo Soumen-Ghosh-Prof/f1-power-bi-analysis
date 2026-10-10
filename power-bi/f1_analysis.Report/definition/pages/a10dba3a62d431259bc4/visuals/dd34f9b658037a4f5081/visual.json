@@ -3,11 +3,11 @@
   "name": "dd34f9b658037a4f5081",
   "position": {
     "x": 965,
-    "y": 665,
-    "z": 6,
+    "y": 255,
+    "z": 6000,
     "height": 400,
     "width": 945,
-    "tabOrder": 6
+    "tabOrder": 6000
   },
   "visual": {
     "visualType": "clusteredBarChart",
@@ -138,7 +138,21 @@
             "gridlineTransparency": {
               "expr": {
                 "Literal": {
-                  "Value": "80D"
+                  "Value": "90D"
+                }
+              }
+            },
+            "gridlineShow": {
+              "expr": {
+                "Literal": {
+                  "Value": "false"
+                }
+              }
+            },
+            "show": {
+              "expr": {
+                "Literal": {
+                  "Value": "false"
                 }
               }
             }
@@ -173,6 +187,38 @@
                 }
               }
             ]
+          }
+        }
+      ],
+      "labels": [
+        {
+          "properties": {
+            "show": {
+              "expr": {
+                "Literal": {
+                  "Value": "true"
+                }
+              }
+            },
+            "fontSize": {
+              "expr": {
+                "Literal": {
+                  "Value": "12D"
+                }
+              }
+            },
+            "color": {
+              "solid": {
+                "color": {
+                  "expr": {
+                    "ThemeDataColor": {
+                      "ColorId": 0,
+                      "Percent": 0
+                    }
+                  }
+                }
+              }
+            }
           }
         }
       ]
@@ -215,7 +261,7 @@
             "text": {
               "expr": {
                 "Literal": {
-                  "Value": "'By Constructor'"
+                  "Value": "'By Team'"
                 }
               }
             },

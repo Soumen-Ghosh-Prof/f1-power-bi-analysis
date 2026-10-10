@@ -4,10 +4,10 @@
   "position": {
     "x": 10,
     "y": 100,
-    "z": 3,
+    "z": 3000,
     "height": 145,
     "width": 1900,
-    "tabOrder": 3
+    "tabOrder": 3000
   },
   "visual": {
     "visualType": "cardVisual",
@@ -53,27 +53,12 @@
                       "Entity": "_Measures"
                     }
                   },
-                  "Property": "Podiums"
+                  "Property": "Points per Start"
                 }
               },
-              "queryRef": "_Measures.Podiums",
-              "nativeQueryRef": "PODIUMS",
-              "displayName": "PODIUMS"
-            },
-            {
-              "field": {
-                "Measure": {
-                  "Expression": {
-                    "SourceRef": {
-                      "Entity": "_Measures"
-                    }
-                  },
-                  "Property": "Double Points Finishes"
-                }
-              },
-              "queryRef": "_Measures.Double Points Finishes",
-              "nativeQueryRef": "DOUBLE PTS FINISHES",
-              "displayName": "DOUBLE PTS FINISHES"
+              "queryRef": "_Measures.Points per Start",
+              "nativeQueryRef": "POINTS / START",
+              "displayName": "POINTS / START"
             },
             {
               "field": {
@@ -89,6 +74,21 @@
               "queryRef": "_Measures.Race Wins",
               "nativeQueryRef": "RACE WINS",
               "displayName": "RACE WINS"
+            },
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "_Measures"
+                    }
+                  },
+                  "Property": "Double Points Finishes"
+                }
+              },
+              "queryRef": "_Measures.Double Points Finishes",
+              "nativeQueryRef": "DOUBLE PTS FINISHES",
+              "displayName": "DOUBLE PTS FINISHES"
             },
             {
               "field": {
@@ -167,7 +167,18 @@
             "show": {
               "expr": {
                 "Literal": {
-                  "Value": "false"
+                  "Value": "true"
+                }
+              }
+            },
+            "lineColor": {
+              "solid": {
+                "color": {
+                  "expr": {
+                    "Literal": {
+                      "Value": "'#2A3245'"
+                    }
+                  }
                 }
               }
             }
@@ -222,20 +233,6 @@
           },
           "selector": {
             "metadata": "_Measures.Race Entries"
-          }
-        },
-        {
-          "properties": {
-            "labelDisplayUnits": {
-              "expr": {
-                "Literal": {
-                  "Value": "1D"
-                }
-              }
-            }
-          },
-          "selector": {
-            "metadata": "_Measures.Podiums"
           }
         },
         {

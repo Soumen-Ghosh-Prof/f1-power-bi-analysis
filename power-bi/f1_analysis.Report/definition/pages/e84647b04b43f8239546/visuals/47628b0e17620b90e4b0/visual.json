@@ -3,11 +3,11 @@
   "name": "47628b0e17620b90e4b0",
   "position": {
     "x": 10,
-    "y": 410,
-    "z": 5,
-    "height": 660,
+    "y": 255,
+    "z": 5000,
+    "height": 400,
     "width": 945,
-    "tabOrder": 5
+    "tabOrder": 3000
   },
   "visual": {
     "visualType": "barChart",
@@ -151,6 +151,20 @@
                   }
                 }
               }
+            },
+            "gridlineShow": {
+              "expr": {
+                "Literal": {
+                  "Value": "false"
+                }
+              }
+            },
+            "show": {
+              "expr": {
+                "Literal": {
+                  "Value": "false"
+                }
+              }
             }
           }
         }
@@ -183,6 +197,37 @@
                 }
               }
             ]
+          }
+        }
+      ],
+      "labels": [
+        {
+          "properties": {
+            "show": {
+              "expr": {
+                "Literal": {
+                  "Value": "true"
+                }
+              }
+            },
+            "color": {
+              "solid": {
+                "color": {
+                  "expr": {
+                    "Literal": {
+                      "Value": "'#FFFFFF'"
+                    }
+                  }
+                }
+              }
+            },
+            "fontSize": {
+              "expr": {
+                "Literal": {
+                  "Value": "12D"
+                }
+              }
+            }
           }
         }
       ]
@@ -266,7 +311,18 @@
             "show": {
               "expr": {
                 "Literal": {
-                  "Value": "false"
+                  "Value": "true"
+                }
+              }
+            },
+            "color": {
+              "solid": {
+                "color": {
+                  "expr": {
+                    "Literal": {
+                      "Value": "'#2A3245'"
+                    }
+                  }
                 }
               }
             }
@@ -378,34 +434,6 @@
             }
           ]
         }
-      },
-      {
-        "name": "df157eda9a54985ef50c",
-        "field": {
-          "Measure": {
-            "Expression": {
-              "SourceRef": {
-                "Entity": "_Measures"
-              }
-            },
-            "Property": "Race Wins"
-          }
-        },
-        "type": "Advanced"
-      },
-      {
-        "name": "cc3408df6f0c3c2a166e",
-        "field": {
-          "Measure": {
-            "Expression": {
-              "SourceRef": {
-                "Entity": "_Measures"
-              }
-            },
-            "Property": "Win %"
-          }
-        },
-        "type": "Advanced"
       }
     ]
   }

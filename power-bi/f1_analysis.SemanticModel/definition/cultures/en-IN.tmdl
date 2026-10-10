@@ -8659,16 +8659,6 @@ cultureInfo en-IN
 			            },
 			            "Weight": 0.491
 			          }
-			        },
-			        {
-			          "POINTS EARNED": {
-			            "State": "Suggested",
-			            "Source": {
-			              "Type": "External",
-			              "Agent": "PowerBI.VisualColumnRename"
-			            },
-			            "Weight": 0.9
-			          }
 			        }
 			      ]
 			    },
@@ -11880,6 +11870,16 @@ cultureInfo en-IN
 			            },
 			            "Weight": 0.491
 			          }
+			        },
+			        {
+			          "POINTS / START": {
+			            "State": "Suggested",
+			            "Source": {
+			              "Type": "External",
+			              "Agent": "PowerBI.VisualColumnRename"
+			            },
+			            "Weight": 0.9
+			          }
 			        }
 			      ]
 			    },
@@ -13231,147 +13231,821 @@ cultureInfo en-IN
 			          }
 			        }
 			      ]
+			    },
+			    "entity__measure.top_driver_with_wins": {
+			      "Definition": {
+			        "Binding": {
+			          "ConceptualEntity": "_Measures",
+			          "ConceptualProperty": "Top Driver With Wins"
+			        }
+			      },
+			      "State": "Generated",
+			      "Terms": [
+			        {
+			          "top driver with wins": {
+			            "State": "Generated"
+			          }
+			        },
+			        {
+			          "driver": {
+			            "State": "Generated",
+			            "Weight": 0.97
+			          }
+			        },
+			        {
+			          "top driver": {
+			            "State": "Generated",
+			            "Weight": 0.97
+			          }
+			        },
+			        {
+			          "best driver with win": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.599
+			          }
+			        },
+			        {
+			          "first driver with win": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.599
+			          }
+			        },
+			        {
+			          "leading driver with win": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.599
+			          }
+			        },
+			        {
+			          "maximum driver with win": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.599
+			          }
+			        },
+			        {
+			          "peak driver with win": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.599
+			          }
+			        },
+			        {
+			          "upper driver with win": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.599
+			          }
+			        },
+			        {
+			          "best driver": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.582
+			          }
+			        },
+			        {
+			          "first driver": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.582
+			          }
+			        },
+			        {
+			          "leading driver": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.582
+			          }
+			        },
+			        {
+			          "maximum driver": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.582
+			          }
+			        },
+			        {
+			          "ERA LEADING DRIVER": {
+			            "State": "Suggested",
+			            "Source": {
+			              "Type": "External",
+			              "Agent": "PowerBI.VisualColumnRename"
+			            },
+			            "Weight": 0.9
+			          }
+			        }
+			      ]
+			    },
+			    "entity__measure.top_team_with_wins": {
+			      "Definition": {
+			        "Binding": {
+			          "ConceptualEntity": "_Measures",
+			          "ConceptualProperty": "Top Team With Wins"
+			        }
+			      },
+			      "State": "Generated",
+			      "Terms": [
+			        {
+			          "top team with wins": {
+			            "State": "Generated"
+			          }
+			        },
+			        {
+			          "team": {
+			            "State": "Generated",
+			            "Weight": 0.97
+			          }
+			        },
+			        {
+			          "top team": {
+			            "State": "Generated",
+			            "Weight": 0.97
+			          }
+			        },
+			        {
+			          "best team with win": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.599
+			          }
+			        },
+			        {
+			          "first team with win": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.599
+			          }
+			        },
+			        {
+			          "leading team with win": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.599
+			          }
+			        },
+			        {
+			          "maximum team with win": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.599
+			          }
+			        },
+			        {
+			          "peak team with win": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.599
+			          }
+			        },
+			        {
+			          "upper team with win": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.599
+			          }
+			        },
+			        {
+			          "best team": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.582
+			          }
+			        },
+			        {
+			          "first team": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.582
+			          }
+			        },
+			        {
+			          "leading team": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.582
+			          }
+			        },
+			        {
+			          "maximum team": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.582
+			          }
+			        },
+			        {
+			          "ERA LEADING TEAM": {
+			            "State": "Suggested",
+			            "Source": {
+			              "Type": "External",
+			              "Agent": "PowerBI.VisualColumnRename"
+			            },
+			            "Weight": 0.9
+			          }
+			        }
+			      ]
+			    },
+			    "entity__measure.selected_driver_header": {
+			      "Definition": {
+			        "Binding": {
+			          "ConceptualEntity": "_Measures",
+			          "ConceptualProperty": "Selected Driver Header"
+			        }
+			      },
+			      "State": "Generated",
+			      "Terms": [
+			        {
+			          "selected driver header": {
+			            "State": "Generated"
+			          }
+			        },
+			        {
+			          "header": {
+			            "State": "Generated",
+			            "Weight": 0.97
+			          }
+			        },
+			        {
+			          "driver header": {
+			            "State": "Generated",
+			            "Weight": 0.97
+			          }
+			        },
+			        {
+			          "selected driver shot": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.492
+			          }
+			        },
+			        {
+			          "selected driver pass": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.492
+			          }
+			        },
+			        {
+			          "selected driver goal": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.492
+			          }
+			        },
+			        {
+			          "driver shot": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.485
+			          }
+			        },
+			        {
+			          "driver pass": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.485
+			          }
+			        },
+			        {
+			          "driver goal": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.485
+			          }
+			        },
+			        {
+			          "selected driver slogan": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.482
+			          }
+			        },
+			        {
+			          "selected driver legend": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.482
+			          }
+			        },
+			        {
+			          "selected driver headpiece": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.482
+			          }
+			        },
+			        {
+			          "selected driver description": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.482
+			          }
+			        }
+			      ]
+			    },
+			    "entity__measure.selected_team_header": {
+			      "Definition": {
+			        "Binding": {
+			          "ConceptualEntity": "_Measures",
+			          "ConceptualProperty": "Selected Team Header"
+			        }
+			      },
+			      "State": "Generated",
+			      "Terms": [
+			        {
+			          "selected team header": {
+			            "State": "Generated"
+			          }
+			        },
+			        {
+			          "header": {
+			            "State": "Generated",
+			            "Weight": 0.97
+			          }
+			        },
+			        {
+			          "team header": {
+			            "State": "Generated",
+			            "Weight": 0.97
+			          }
+			        },
+			        {
+			          "selected team shot": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.492
+			          }
+			        },
+			        {
+			          "selected team pass": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.492
+			          }
+			        },
+			        {
+			          "selected team goal": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.492
+			          }
+			        },
+			        {
+			          "team shot": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.485
+			          }
+			        },
+			        {
+			          "team pass": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.485
+			          }
+			        },
+			        {
+			          "team goal": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.485
+			          }
+			        },
+			        {
+			          "selected team slogan": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.482
+			          }
+			        },
+			        {
+			          "selected team legend": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.482
+			          }
+			        },
+			        {
+			          "selected team headpiece": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.482
+			          }
+			        },
+			        {
+			          "selected team description": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.482
+			          }
+			        }
+			      ]
+			    },
+			    "entity__measure.sprint_starts": {
+			      "Definition": {
+			        "Binding": {
+			          "ConceptualEntity": "_Measures",
+			          "ConceptualProperty": "Sprint Starts"
+			        }
+			      },
+			      "State": "Generated",
+			      "Terms": [
+			        {
+			          "sprint starts": {
+			            "State": "Generated"
+			          }
+			        },
+			        {
+			          "starts": {
+			            "State": "Generated",
+			            "Weight": 0.97
+			          }
+			        },
+			        {
+			          "sprint twitch": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.485
+			          }
+			        },
+			        {
+			          "sprint jump": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.485
+			          }
+			        },
+			        {
+			          "sprint jerk": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.485
+			          }
+			        },
+			        {
+			          "sprint flinch": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.485
+			          }
+			        },
+			        {
+			          "sprint jolt": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.485
+			          }
+			        },
+			        {
+			          "twitch": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.476
+			          }
+			        },
+			        {
+			          "jump": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.476
+			          }
+			        },
+			        {
+			          "jerk": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.476
+			          }
+			        },
+			        {
+			          "flinch": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.476
+			          }
+			        },
+			        {
+			          "jolt": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.476
+			          }
+			        }
+			      ]
+			    },
+			    "entity__measure.sprint_wins": {
+			      "Definition": {
+			        "Binding": {
+			          "ConceptualEntity": "_Measures",
+			          "ConceptualProperty": "Sprint Wins"
+			        }
+			      },
+			      "State": "Generated",
+			      "Terms": [
+			        {
+			          "sprint wins": {
+			            "State": "Generated"
+			          }
+			        },
+			        {
+			          "wins": {
+			            "State": "Generated",
+			            "Weight": 0.97
+			          }
+			        },
+			        {
+			          "sprint success": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.5
+			          }
+			        },
+			        {
+			          "sprint landslide": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.5
+			          }
+			        },
+			        {
+			          "sprint conquest": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.5
+			          }
+			        },
+			        {
+			          "success": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.491
+			          }
+			        },
+			        {
+			          "landslide": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.491
+			          }
+			        },
+			        {
+			          "conquest": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.491
+			          }
+			        },
+			        {
+			          "sprint victory": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.485
+			          }
+			        },
+			        {
+			          "sprint triumph": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.485
+			          }
+			        },
+			        {
+			          "victory": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.476
+			          }
+			        },
+			        {
+			          "triumph": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.476
+			          }
+			        }
+			      ]
+			    },
+			    "entity__measure.sprint_win_": {
+			      "Definition": {
+			        "Binding": {
+			          "ConceptualEntity": "_Measures",
+			          "ConceptualProperty": "Sprint Win %"
+			        }
+			      },
+			      "State": "Generated",
+			      "Terms": [
+			        {
+			          "sprint win %": {
+			            "State": "Generated"
+			          }
+			        },
+			        {
+			          "sprint win percentage": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.762
+			          }
+			        },
+			        {
+			          "sprint win pct": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.739
+			          }
+			        }
+			      ]
 			    }
 			  },
 			  "Relationships": {
-			    "fact_pit_stop_has_dim_driver": {
-			      "Binding": {
-			        "ConceptualEntity": "fact_pit_stops"
-			      },
-			      "State": "Generated",
-			      "Roles": {
-			        "fact_pit_stop": {
-			          "Target": {
-			            "Entity": "fact_pit_stop"
-			          }
-			        },
-			        "dim_driver": {
-			          "Target": {
-			            "Entity": "dim_driver"
-			          }
-			        }
-			      },
-			      "Phrasings": [
-			        {
-			          "Attribute": {
-			            "Subject": {
-			              "Role": "fact_pit_stop"
-			            },
-			            "Object": {
-			              "Role": "dim_driver"
-			            }
-			          },
-			          "State": "Generated",
-			          "Weight": 0.99,
-			          "ID": "fact_pit_stops_have_dim_drivers"
-			        },
-			        {
-			          "Attribute": {
-			            "Subject": {
-			              "Role": "dim_driver"
-			            },
-			            "Object": {
-			              "Role": "fact_pit_stop"
-			            }
-			          },
-			          "State": "Generated",
-			          "Weight": 0.99,
-			          "ID": "dim_drivers_have_fact_pit_stops"
-			        }
-			      ]
-			    },
-			    "fact_pit_stop_has_dim_race": {
-			      "Binding": {
-			        "ConceptualEntity": "fact_pit_stops"
-			      },
-			      "State": "Generated",
-			      "Roles": {
-			        "fact_pit_stop": {
-			          "Target": {
-			            "Entity": "fact_pit_stop"
-			          }
-			        },
-			        "dim_race": {
-			          "Target": {
-			            "Entity": "dim_race"
-			          }
-			        }
-			      },
-			      "Phrasings": [
-			        {
-			          "Attribute": {
-			            "Subject": {
-			              "Role": "fact_pit_stop"
-			            },
-			            "Object": {
-			              "Role": "dim_race"
-			            }
-			          },
-			          "State": "Generated",
-			          "Weight": 0.99,
-			          "ID": "fact_pit_stops_have_dim_races"
-			        },
-			        {
-			          "Attribute": {
-			            "Subject": {
-			              "Role": "dim_race"
-			            },
-			            "Object": {
-			              "Role": "fact_pit_stop"
-			            }
-			          },
-			          "State": "Generated",
-			          "Weight": 0.99,
-			          "ID": "dim_races_have_fact_pit_stops"
-			        }
-			      ]
-			    },
-			    "fact_lap_times_has_dim_driver": {
-			      "Binding": {
-			        "ConceptualEntity": "fact_lap_times"
-			      },
-			      "State": "Generated",
-			      "Roles": {
-			        "fact_lap_times": {
-			          "Target": {
-			            "Entity": "fact_lap_times"
-			          }
-			        },
-			        "dim_driver": {
-			          "Target": {
-			            "Entity": "dim_driver"
-			          }
-			        }
-			      },
-			      "Phrasings": [
-			        {
-			          "Attribute": {
-			            "Subject": {
-			              "Role": "fact_lap_times"
-			            },
-			            "Object": {
-			              "Role": "dim_driver"
-			            }
-			          },
-			          "State": "Generated",
-			          "Weight": 0.99,
-			          "ID": "fact_lap_times_have_dim_drivers"
-			        },
-			        {
-			          "Attribute": {
-			            "Subject": {
-			              "Role": "dim_driver"
-			            },
-			            "Object": {
-			              "Role": "fact_lap_times"
-			            }
-			          },
-			          "State": "Generated",
-			          "Weight": 0.99,
-			          "ID": "dim_drivers_have_fact_lap_times"
-			        }
-			      ]
-			    },
 			    "fact_lap_times_has_dim_race": {
 			      "Binding": {
 			        "ConceptualEntity": "fact_lap_times"
@@ -13599,6 +14273,336 @@ cultureInfo en-IN
 			          "State": "Generated",
 			          "Weight": 0.99,
 			          "ID": "dim_constructors_have_fact_results"
+			        }
+			      ]
+			    },
+			    "fact_sprint_result_has_entity__measure_sprint_win_": {
+			      "Binding": {
+			        "ConceptualEntity": "fact_sprint_results"
+			      },
+			      "State": "Generated",
+			      "Roles": {
+			        "fact_sprint_result": {
+			          "Target": {
+			            "Entity": "fact_sprint_result"
+			          }
+			        },
+			        "entity__measure.sprint_win_": {
+			          "Target": {
+			            "Entity": "entity__measure.sprint_win_"
+			          }
+			        }
+			      },
+			      "Phrasings": [
+			        {
+			          "Attribute": {
+			            "Subject": {
+			              "Role": "fact_sprint_result"
+			            },
+			            "Object": {
+			              "Role": "entity__measure.sprint_win_"
+			            }
+			          },
+			          "State": "Generated",
+			          "Weight": 0.99,
+			          "ID": "fact_sprint_results_have_sprint_win_"
+			        }
+			      ]
+			    },
+			    "fact_sprint_result_has_entity__measure_sprint_wins": {
+			      "Binding": {
+			        "ConceptualEntity": "fact_sprint_results"
+			      },
+			      "State": "Generated",
+			      "Roles": {
+			        "fact_sprint_result": {
+			          "Target": {
+			            "Entity": "fact_sprint_result"
+			          }
+			        },
+			        "entity__measure.sprint_wins": {
+			          "Target": {
+			            "Entity": "entity__measure.sprint_wins"
+			          }
+			        }
+			      },
+			      "Phrasings": [
+			        {
+			          "Attribute": {
+			            "Subject": {
+			              "Role": "fact_sprint_result"
+			            },
+			            "Object": {
+			              "Role": "entity__measure.sprint_wins"
+			            }
+			          },
+			          "State": "Generated",
+			          "Weight": 0.99,
+			          "ID": "fact_sprint_results_have_sprint_wins"
+			        }
+			      ]
+			    },
+			    "fact_sprint_result_has_entity__measure_sprint_starts": {
+			      "Binding": {
+			        "ConceptualEntity": "fact_sprint_results"
+			      },
+			      "State": "Generated",
+			      "Roles": {
+			        "fact_sprint_result": {
+			          "Target": {
+			            "Entity": "fact_sprint_result"
+			          }
+			        },
+			        "entity__measure.sprint_starts": {
+			          "Target": {
+			            "Entity": "entity__measure.sprint_starts"
+			          }
+			        }
+			      },
+			      "Phrasings": [
+			        {
+			          "Attribute": {
+			            "Subject": {
+			              "Role": "fact_sprint_result"
+			            },
+			            "Object": {
+			              "Role": "entity__measure.sprint_starts"
+			            }
+			          },
+			          "State": "Generated",
+			          "Weight": 0.99,
+			          "ID": "fact_sprint_results_have_sprint_starts"
+			        }
+			      ]
+			    },
+			    "dim_constructor_has_entity__measure_selected_team_header": {
+			      "Binding": {
+			        "ConceptualEntity": "dim_constructors"
+			      },
+			      "State": "Generated",
+			      "Roles": {
+			        "dim_constructor": {
+			          "Target": {
+			            "Entity": "dim_constructor"
+			          }
+			        },
+			        "entity__measure.selected_team_header": {
+			          "Target": {
+			            "Entity": "entity__measure.selected_team_header"
+			          }
+			        }
+			      },
+			      "Phrasings": [
+			        {
+			          "Attribute": {
+			            "Subject": {
+			              "Role": "dim_constructor"
+			            },
+			            "Object": {
+			              "Role": "entity__measure.selected_team_header"
+			            }
+			          },
+			          "State": "Generated",
+			          "Weight": 0.99,
+			          "ID": "dim_constructors_have_selected_team_header"
+			        },
+			        {
+			          "Verb": {
+			            "Subject": {
+			              "Role": "entity__measure.selected_team_header"
+			            },
+			            "Verbs": [
+			              {
+			                "head": {
+			                  "State": "Generated"
+			                }
+			              }
+			            ],
+			            "Object": {
+			              "Role": "dim_constructor"
+			            }
+			          },
+			          "State": "Generated",
+			          "Weight": 0.75,
+			          "ID": "selected_team_header_head_dim_constructors"
+			        },
+			        {
+			          "Attribute": {
+			            "Subject": {
+			              "Role": "entity__measure.selected_team_header"
+			            },
+			            "Object": {
+			              "Role": "dim_constructor"
+			            }
+			          },
+			          "State": "Generated",
+			          "Weight": 0.99,
+			          "ID": "selected_team_header_have_dim_constructors"
+			        }
+			      ]
+			    },
+			    "dim_driver_has_entity__measure_selected_driver_header": {
+			      "Binding": {
+			        "ConceptualEntity": "dim_drivers"
+			      },
+			      "State": "Generated",
+			      "Roles": {
+			        "dim_driver": {
+			          "Target": {
+			            "Entity": "dim_driver"
+			          }
+			        },
+			        "entity__measure.selected_driver_header": {
+			          "Target": {
+			            "Entity": "entity__measure.selected_driver_header"
+			          }
+			        }
+			      },
+			      "Phrasings": [
+			        {
+			          "Attribute": {
+			            "Subject": {
+			              "Role": "dim_driver"
+			            },
+			            "Object": {
+			              "Role": "entity__measure.selected_driver_header"
+			            }
+			          },
+			          "State": "Generated",
+			          "Weight": 0.99,
+			          "ID": "dim_drivers_have_selected_driver_header"
+			        },
+			        {
+			          "Verb": {
+			            "Subject": {
+			              "Role": "entity__measure.selected_driver_header"
+			            },
+			            "Verbs": [
+			              {
+			                "head": {
+			                  "State": "Generated"
+			                }
+			              }
+			            ],
+			            "Object": {
+			              "Role": "dim_driver"
+			            }
+			          },
+			          "State": "Generated",
+			          "Weight": 0.75,
+			          "ID": "selected_driver_header_head_dim_drivers"
+			        },
+			        {
+			          "Attribute": {
+			            "Subject": {
+			              "Role": "entity__measure.selected_driver_header"
+			            },
+			            "Object": {
+			              "Role": "dim_driver"
+			            }
+			          },
+			          "State": "Generated",
+			          "Weight": 0.99,
+			          "ID": "selected_driver_header_have_dim_drivers"
+			        }
+			      ]
+			    },
+			    "entity__measure_has_top_team_with_wins": {
+			      "Binding": {
+			        "ConceptualEntity": "_Measures"
+			      },
+			      "State": "Generated",
+			      "Roles": {
+			        "entity__measure": {
+			          "Target": {
+			            "Entity": "entity__measure"
+			          }
+			        },
+			        "entity__measure.top_team_with_wins": {
+			          "Target": {
+			            "Entity": "entity__measure.top_team_with_wins"
+			          }
+			        }
+			      },
+			      "Phrasings": [
+			        {
+			          "Attribute": {
+			            "Subject": {
+			              "Role": "entity__measure"
+			            },
+			            "Object": {
+			              "Role": "entity__measure.top_team_with_wins"
+			            }
+			          },
+			          "State": "Generated",
+			          "Weight": 0.99,
+			          "ID": "Phrasing_measures_have_top_team_with_wins"
+			        }
+			      ]
+			    },
+			    "entity__measure_has_top_driver_with_wins": {
+			      "Binding": {
+			        "ConceptualEntity": "_Measures"
+			      },
+			      "State": "Generated",
+			      "Roles": {
+			        "entity__measure": {
+			          "Target": {
+			            "Entity": "entity__measure"
+			          }
+			        },
+			        "entity__measure.top_driver_with_wins": {
+			          "Target": {
+			            "Entity": "entity__measure.top_driver_with_wins"
+			          }
+			        }
+			      },
+			      "Phrasings": [
+			        {
+			          "Attribute": {
+			            "Subject": {
+			              "Role": "entity__measure"
+			            },
+			            "Object": {
+			              "Role": "entity__measure.top_driver_with_wins"
+			            }
+			          },
+			          "State": "Generated",
+			          "Weight": 0.99,
+			          "ID": "Phrasing_measures_have_top_driver_with_wins"
+			        },
+			        {
+			          "Verb": {
+			            "Subject": {
+			              "Role": "entity__measure.top_driver_with_wins"
+			            },
+			            "Verbs": [
+			              {
+			                "drive": {
+			                  "State": "Generated"
+			                }
+			              }
+			            ],
+			            "Object": {
+			              "Role": "entity__measure"
+			            }
+			          },
+			          "State": "Generated",
+			          "Weight": 0.75,
+			          "ID": "top_driver_with_wins_drive__measures"
+			        },
+			        {
+			          "Attribute": {
+			            "Subject": {
+			              "Role": "entity__measure.top_driver_with_wins"
+			            },
+			            "Object": {
+			              "Role": "entity__measure"
+			            }
+			          },
+			          "State": "Generated",
+			          "Weight": 0.99,
+			          "ID": "top_driver_with_wins_have__measures"
 			        }
 			      ]
 			    },
@@ -17879,6 +18883,144 @@ cultureInfo en-IN
 			          "State": "Generated",
 			          "Weight": 0.75,
 			          "ID": "dim_constructors_construct"
+			        }
+			      ]
+			    },
+			    "fact_lap_times_has_dim_driver": {
+			      "Binding": {
+			        "ConceptualEntity": "fact_lap_times"
+			      },
+			      "State": "Generated",
+			      "Roles": {
+			        "fact_lap_times": {
+			          "Target": {
+			            "Entity": "fact_lap_times"
+			          }
+			        },
+			        "dim_driver": {
+			          "Target": {
+			            "Entity": "dim_driver"
+			          }
+			        }
+			      },
+			      "Phrasings": [
+			        {
+			          "Attribute": {
+			            "Subject": {
+			              "Role": "fact_lap_times"
+			            },
+			            "Object": {
+			              "Role": "dim_driver"
+			            }
+			          },
+			          "State": "Generated",
+			          "Weight": 0.99,
+			          "ID": "fact_lap_times_have_dim_drivers"
+			        },
+			        {
+			          "Attribute": {
+			            "Subject": {
+			              "Role": "dim_driver"
+			            },
+			            "Object": {
+			              "Role": "fact_lap_times"
+			            }
+			          },
+			          "State": "Generated",
+			          "Weight": 0.99,
+			          "ID": "dim_drivers_have_fact_lap_times"
+			        }
+			      ]
+			    },
+			    "fact_pit_stop_has_dim_race": {
+			      "Binding": {
+			        "ConceptualEntity": "fact_pit_stops"
+			      },
+			      "State": "Generated",
+			      "Roles": {
+			        "fact_pit_stop": {
+			          "Target": {
+			            "Entity": "fact_pit_stop"
+			          }
+			        },
+			        "dim_race": {
+			          "Target": {
+			            "Entity": "dim_race"
+			          }
+			        }
+			      },
+			      "Phrasings": [
+			        {
+			          "Attribute": {
+			            "Subject": {
+			              "Role": "fact_pit_stop"
+			            },
+			            "Object": {
+			              "Role": "dim_race"
+			            }
+			          },
+			          "State": "Generated",
+			          "Weight": 0.99,
+			          "ID": "fact_pit_stops_have_dim_races"
+			        },
+			        {
+			          "Attribute": {
+			            "Subject": {
+			              "Role": "dim_race"
+			            },
+			            "Object": {
+			              "Role": "fact_pit_stop"
+			            }
+			          },
+			          "State": "Generated",
+			          "Weight": 0.99,
+			          "ID": "dim_races_have_fact_pit_stops"
+			        }
+			      ]
+			    },
+			    "fact_pit_stop_has_dim_driver": {
+			      "Binding": {
+			        "ConceptualEntity": "fact_pit_stops"
+			      },
+			      "State": "Generated",
+			      "Roles": {
+			        "fact_pit_stop": {
+			          "Target": {
+			            "Entity": "fact_pit_stop"
+			          }
+			        },
+			        "dim_driver": {
+			          "Target": {
+			            "Entity": "dim_driver"
+			          }
+			        }
+			      },
+			      "Phrasings": [
+			        {
+			          "Attribute": {
+			            "Subject": {
+			              "Role": "fact_pit_stop"
+			            },
+			            "Object": {
+			              "Role": "dim_driver"
+			            }
+			          },
+			          "State": "Generated",
+			          "Weight": 0.99,
+			          "ID": "fact_pit_stops_have_dim_drivers"
+			        },
+			        {
+			          "Attribute": {
+			            "Subject": {
+			              "Role": "dim_driver"
+			            },
+			            "Object": {
+			              "Role": "fact_pit_stop"
+			            }
+			          },
+			          "State": "Generated",
+			          "Weight": 0.99,
+			          "ID": "dim_drivers_have_fact_pit_stops"
 			        }
 			      ]
 			    },

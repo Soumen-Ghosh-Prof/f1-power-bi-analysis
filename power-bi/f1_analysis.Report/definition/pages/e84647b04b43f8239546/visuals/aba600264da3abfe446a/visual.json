@@ -3,11 +3,11 @@
   "name": "aba600264da3abfe446a",
   "position": {
     "x": 965,
-    "y": 100,
-    "z": 7,
-    "height": 300,
-    "width": 570,
-    "tabOrder": 7
+    "y": 665,
+    "z": 7000,
+    "height": 400,
+    "width": 945,
+    "tabOrder": 0
   },
   "visual": {
     "visualType": "donutChart",
@@ -98,9 +98,8 @@
               "solid": {
                 "color": {
                   "expr": {
-                    "ThemeDataColor": {
-                      "ColorId": 9,
-                      "Percent": 0
+                    "Literal": {
+                      "Value": "'#E10600'"
                     }
                   }
                 }
@@ -117,9 +116,8 @@
               "solid": {
                 "color": {
                   "expr": {
-                    "ThemeDataColor": {
-                      "ColorId": 2,
-                      "Percent": -0.25
+                    "Literal": {
+                      "Value": "'#F59E0B'"
                     }
                   }
                 }
@@ -136,9 +134,8 @@
               "solid": {
                 "color": {
                   "expr": {
-                    "ThemeDataColor": {
-                      "ColorId": 2,
-                      "Percent": 0.6
+                    "Literal": {
+                      "Value": "'#6366F1'"
                     }
                   }
                 }
@@ -376,7 +373,31 @@
             "show": {
               "expr": {
                 "Literal": {
-                  "Value": "false"
+                  "Value": "true"
+                }
+              }
+            },
+            "color": {
+              "solid": {
+                "color": {
+                  "expr": {
+                    "Literal": {
+                      "Value": "'#2A3245'"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      ],
+      "visualHeader": [
+        {
+          "properties": {
+            "show": {
+              "expr": {
+                "Literal": {
+                  "Value": "true"
                 }
               }
             }

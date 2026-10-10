@@ -3,11 +3,11 @@
   "name": "52dc910fc3875d8fa84d",
   "position": {
     "x": 10,
-    "y": 665,
-    "z": 8,
+    "y": 255,
+    "z": 8000,
     "height": 400,
     "width": 945,
-    "tabOrder": 8
+    "tabOrder": 8000
   },
   "visual": {
     "visualType": "lineChart",
@@ -134,7 +134,7 @@
             "gridlineTransparency": {
               "expr": {
                 "Literal": {
-                  "Value": "80D"
+                  "Value": "90D"
                 }
               }
             }
@@ -185,6 +185,20 @@
           },
           "selector": {
             "metadata": "_Measures.Avg Starting Position"
+          }
+        },
+        {
+          "properties": {
+            "strokeWidth": {
+              "expr": {
+                "Literal": {
+                  "Value": "3D"
+                }
+              }
+            }
+          },
+          "selector": {
+            "metadata": "_Measures.Avg Finishing Position"
           }
         }
       ],
@@ -293,7 +307,7 @@
             "text": {
               "expr": {
                 "Literal": {
-                  "Value": "'AVG STARTING POSITION VS AVG FINISHING POSITION'"
+                  "Value": "'AVG STARTING POSITION vs. AVG FINISHING POSITION'"
                 }
               }
             },

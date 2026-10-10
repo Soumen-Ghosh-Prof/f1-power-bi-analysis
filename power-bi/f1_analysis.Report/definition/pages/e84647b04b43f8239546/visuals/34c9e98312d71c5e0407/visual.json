@@ -3,11 +3,11 @@
   "name": "34c9e98312d71c5e0407",
   "position": {
     "x": 965,
-    "y": 410,
-    "z": 4,
-    "height": 660,
+    "y": 255,
+    "z": 4000,
+    "height": 400,
     "width": 945,
-    "tabOrder": 4
+    "tabOrder": 2000
   },
   "visual": {
     "visualType": "barChart",
@@ -329,7 +329,18 @@
             "show": {
               "expr": {
                 "Literal": {
-                  "Value": "false"
+                  "Value": "true"
+                }
+              }
+            },
+            "color": {
+              "solid": {
+                "color": {
+                  "expr": {
+                    "Literal": {
+                      "Value": "'#2A3245'"
+                    }
+                  }
                 }
               }
             }
@@ -441,20 +452,6 @@
             }
           ]
         }
-      },
-      {
-        "name": "725b9503b9440a62e9bd",
-        "field": {
-          "Measure": {
-            "Expression": {
-              "SourceRef": {
-                "Entity": "_Measures"
-              }
-            },
-            "Property": "Race Wins"
-          }
-        },
-        "type": "Advanced"
       }
     ]
   }

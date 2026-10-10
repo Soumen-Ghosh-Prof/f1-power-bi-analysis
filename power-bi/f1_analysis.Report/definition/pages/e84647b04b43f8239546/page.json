@@ -30,5 +30,107 @@
         }
       }
     ]
-  }
+  },
+  "visualInteractions": [
+    {
+      "source": "47628b0e17620b90e4b0",
+      "target": "858ebda68f1150455089",
+      "type": "DataFilter"
+    },
+    {
+      "source": "47628b0e17620b90e4b0",
+      "target": "f725f3cf21f84470259f",
+      "type": "NoFilter"
+    },
+    {
+      "source": "47628b0e17620b90e4b0",
+      "target": "34c9e98312d71c5e0407",
+      "type": "HighlightFilter"
+    },
+    {
+      "source": "f725f3cf21f84470259f",
+      "target": "858ebda68f1150455089",
+      "type": "NoFilter"
+    },
+    {
+      "source": "f725f3cf21f84470259f",
+      "target": "aba600264da3abfe446a",
+      "type": "DataFilter"
+    },
+    {
+      "source": "47628b0e17620b90e4b0",
+      "target": "b687c104732eb366af6b",
+      "type": "NoFilter"
+    },
+    {
+      "source": "47628b0e17620b90e4b0",
+      "target": "aba600264da3abfe446a",
+      "type": "DataFilter"
+    },
+    {
+      "source": "34c9e98312d71c5e0407",
+      "target": "47628b0e17620b90e4b0",
+      "type": "HighlightFilter"
+    },
+    {
+      "source": "34c9e98312d71c5e0407",
+      "target": "aba600264da3abfe446a",
+      "type": "DataFilter"
+    },
+    {
+      "source": "34c9e98312d71c5e0407",
+      "target": "b687c104732eb366af6b",
+      "type": "NoFilter"
+    },
+    {
+      "source": "34c9e98312d71c5e0407",
+      "target": "f725f3cf21f84470259f",
+      "type": "NoFilter"
+    },
+    {
+      "source": "aba600264da3abfe446a",
+      "target": "b687c104732eb366af6b",
+      "type": "NoFilter"
+    },
+    {
+      "source": "aba600264da3abfe446a",
+      "target": "34c9e98312d71c5e0407",
+      "type": "NoFilter"
+    },
+    {
+      "source": "aba600264da3abfe446a",
+      "target": "47628b0e17620b90e4b0",
+      "type": "NoFilter"
+    },
+    {
+      "source": "aba600264da3abfe446a",
+      "target": "f725f3cf21f84470259f",
+      "type": "NoFilter"
+    },
+    {
+      "source": "c265f25ba5d5b2de9e40",
+      "target": "47628b0e17620b90e4b0",
+      "type": "NoFilter"
+    },
+    {
+      "source": "c265f25ba5d5b2de9e40",
+      "target": "34c9e98312d71c5e0407",
+      "type": "NoFilter"
+    },
+    {
+      "source": "c265f25ba5d5b2de9e40",
+      "target": "aba600264da3abfe446a",
+      "type": "NoFilter"
+    },
+    {
+      "source": "c265f25ba5d5b2de9e40",
+      "target": "b687c104732eb366af6b",
+      "type": "NoFilter"
+    },
+    {
+      "source": "aba600264da3abfe446a",
+      "target": "c265f25ba5d5b2de9e40",
+      "type": "NoFilter"
+    }
+  ]
 }

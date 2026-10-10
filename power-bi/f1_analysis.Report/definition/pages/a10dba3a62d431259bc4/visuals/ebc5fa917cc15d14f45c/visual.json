@@ -4,10 +4,10 @@
   "position": {
     "x": 10,
     "y": 100,
-    "z": 3,
+    "z": 3000,
     "height": 145,
     "width": 1900,
-    "tabOrder": 3
+    "tabOrder": 3000
   },
   "visual": {
     "visualType": "cardVisual",
@@ -53,27 +53,12 @@
                       "Entity": "_Measures"
                     }
                   },
-                  "Property": "Total Points"
+                  "Property": "Race Entries"
                 }
               },
-              "queryRef": "_Measures.Total Points",
-              "nativeQueryRef": "POINTS EARNED",
-              "displayName": "POINTS EARNED"
-            },
-            {
-              "field": {
-                "Measure": {
-                  "Expression": {
-                    "SourceRef": {
-                      "Entity": "_Measures"
-                    }
-                  },
-                  "Property": "Normalized Points"
-                }
-              },
-              "queryRef": "_Measures.Normalized Points",
-              "nativeQueryRef": "NORMALIZED POINTS",
-              "displayName": "NORMALIZED POINTS"
+              "queryRef": "_Measures.Race Entries",
+              "nativeQueryRef": "RACE ENTRIES",
+              "displayName": "RACE ENTRIES"
             },
             {
               "field": {
@@ -89,6 +74,21 @@
               "queryRef": "_Measures.Pole Positions",
               "nativeQueryRef": "POLE POSITIONS",
               "displayName": "POLE POSITIONS"
+            },
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "_Measures"
+                    }
+                  },
+                  "Property": "Race Wins"
+                }
+              },
+              "queryRef": "_Measures.Race Wins",
+              "nativeQueryRef": "RACE WINS",
+              "displayName": "RACE WINS"
             },
             {
               "field": {
@@ -221,7 +221,7 @@
             }
           },
           "selector": {
-            "metadata": "_Measures.Total Points"
+            "metadata": "_Measures.Race Entries"
           }
         },
         {
@@ -235,7 +235,21 @@
             }
           },
           "selector": {
-            "metadata": "_Measures.Normalized Points"
+            "metadata": "_Measures.Pole Positions"
+          }
+        },
+        {
+          "properties": {
+            "labelDisplayUnits": {
+              "expr": {
+                "Literal": {
+                  "Value": "1D"
+                }
+              }
+            }
+          },
+          "selector": {
+            "metadata": "_Measures.Race Wins"
           }
         }
       ],

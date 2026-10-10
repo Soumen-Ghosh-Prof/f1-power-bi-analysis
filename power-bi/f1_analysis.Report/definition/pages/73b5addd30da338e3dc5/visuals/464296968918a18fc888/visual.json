@@ -4,10 +4,10 @@
   "position": {
     "x": 965,
     "y": 255,
-    "z": 4,
+    "z": 4000,
     "height": 400,
     "width": 945,
-    "tabOrder": 4
+    "tabOrder": 4000
   },
   "visual": {
     "visualType": "clusteredBarChart",
@@ -253,7 +253,7 @@
             "text": {
               "expr": {
                 "Literal": {
-                  "Value": "'By Driver'"
+                  "Value": "'Top 5 Drivers'"
                 }
               }
             },
@@ -294,7 +294,18 @@
             "show": {
               "expr": {
                 "Literal": {
-                  "Value": "false"
+                  "Value": "true"
+                }
+              }
+            },
+            "color": {
+              "solid": {
+                "color": {
+                  "expr": {
+                    "Literal": {
+                      "Value": "'#2A3245'"
+                    }
+                  }
                 }
               }
             }
@@ -406,20 +417,6 @@
             }
           ]
         }
-      },
-      {
-        "name": "80aa5af606c3b823704f",
-        "field": {
-          "Measure": {
-            "Expression": {
-              "SourceRef": {
-                "Entity": "_Measures"
-              }
-            },
-            "Property": "Race Wins"
-          }
-        },
-        "type": "Advanced"
       }
     ]
   }
