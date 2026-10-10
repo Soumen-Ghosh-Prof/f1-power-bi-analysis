@@ -44,7 +44,7 @@ expression constructors =
 		let
 		    Source = Csv.Document(File.Contents("C:\data-analytics-projects\power-bi-portfolio-project\data\F1-Race\constructors.csv"),[Delimiter=",", Columns=5, Encoding=1252, QuoteStyle=QuoteStyle.None]),
 		    #"Promoted Headers" = Table.PromoteHeaders(Source, [PromoteAllScalars=true]),
-		    #"Renamed Columns" = Table.RenameColumns(#"Promoted Headers",{{"constructorId", "constructor_id"}, {"name", "constructor_name"}}),
+		    #"Renamed Columns" = Table.RenameColumns(#"Promoted Headers",{{"constructorId", "constructor_id"}, {"name", "constructor_name"}, {"constructorRef", "constructor_ref"}}),
 		    #"Changed Type" = Table.TransformColumnTypes(#"Renamed Columns",{{"constructor_id", Int64.Type}})
 		in
 		    #"Changed Type"

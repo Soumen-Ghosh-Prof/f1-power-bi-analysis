@@ -2,16 +2,15 @@ table _Measures
 	lineageTag: 8c67ff10-6542-41f3-9e94-b9e693aba0d6
 
 	measure 'Total Points' = SUM(fact_results[points])
+		formatString: 0.0
 		lineageTag: c58cc688-9480-4031-ba7e-1e23239c25fd
 
-		annotation PBI_FormatHint = {"isGeneralNumber":true}
-
 	measure 'Race Entries' = COUNTROWS(fact_results)
-		formatString: 0
+		formatString: #,0
 		lineageTag: bde94572-dab1-4426-844d-2f871e2f9133
 
 	measure 'Race Starts' = CALCULATE([Race Entries], fact_results[laps] > 0 || fact_results[starting_position] > 0)
-		formatString: 0
+		formatString: #,0
 		lineageTag: 396bc376-bc77-42b1-bd88-d155ca40e4d5
 
 	measure 'Seasons Contested' = CALCULATE(DISTINCTCOUNT(dim_races[year]), fact_results[laps] > 0 || fact_results[starting_position] > 0, CROSSFILTER(fact_results[race_id], dim_races[race_id], Both))
@@ -33,11 +32,11 @@ table _Measures
 		annotation PBI_FormatHint = {"isGeneralNumber":true}
 
 	measure 'Race Wins' = CALCULATE([Race Starts], fact_results[finishing_position] = 1)
-		formatString: 0
+		formatString: #,0
 		lineageTag: 706f9c31-c7ee-4d3c-b0a5-beb62d86a67d
 
 	measure Podiums = CALCULATE([Race Starts], fact_results[finishing_position] <= 3)
-		formatString: 0
+		formatString: #,0
 		lineageTag: c43a6b8c-7100-4016-8b48-def0ca57b537
 
 	measure 'Points Finishes' = CALCULATE([Race Starts], fact_results[points] > 0)
@@ -86,11 +85,11 @@ table _Measures
 		lineageTag: d7bb9734-5a98-4d50-b530-6fc30a7b79fa
 
 	measure 'Classified Finishes' = CALCULATE([Race Starts], NOT(ISBLANK(fact_results[finishing_position])))
-		formatString: 0
+		formatString: #,0
 		lineageTag: e364610e-b6c5-4574-a858-6fd1cbcf2f8f
 
 	measure DNFs = CALCULATE([Race Starts], ISBLANK(fact_results[finishing_position]))
-		formatString: 0
+		formatString: #,0
 		lineageTag: 47c9e93a-e57a-4b28-bfb6-28d5adbf67da
 
 	measure 'DNF %' = DIVIDE([DNFs], [Race Starts])
@@ -156,6 +155,162 @@ table _Measures
 	measure 'Avg Lap Speed (km/h)' = AVERAGE(fact_results[fastest_lap_avg_speed])
 		formatString: 0.0
 		lineageTag: 64a8702e-52bc-407c-b1d9-dcfc2666c08f
+
+	measure 'Points per Start' = DIVIDE([Total Points], [Race Starts])
+		formatString: 0.00
+		lineageTag: 08462c08-7890-472f-9137-42195a57ae2d
+
+	measure 'Win-to-Podium %' = DIVIDE([Race Wins], [Podiums])
+		formatString: 0.00%;-0.00%;0.00%
+		lineageTag: 4233554e-6508-4b0c-b877-e5c59894d130
+
+	measure '1-2 Finishes' = COUNTROWS(FILTER(SUMMARIZE(fact_results, fact_results[race_id], fact_results[consturctor_id], "P1-Count", CALCULATE(COUNTROWS(fact_results), fact_results[finishing_position] = 1), "P2-Count", CALCULATE(COUNTROWS(fact_results), fact_results[finishing_position] = 2)), [P1-Count] = 1 && [P2-Count] = 1))
+		formatString: 0
+		lineageTag: 1ce4a106-02ba-4f22-b319-b4ed3823c23f
+
+	measure 'Double Points Finishes' = COUNTROWS(FILTER(SUMMARIZE(fact_results, fact_results[race_id], fact_results[consturctor_id], "Scoring-Drivers", CALCULATE(COUNTROWS(fact_results), fact_results[points] > 0)), [Scoring-Drivers] >= 2))
+		formatString: #,0
+		lineageTag: b98e0e60-d388-4b8c-9fb6-594053a0a11c
+
+	measure Hat-Tricks = CALCULATE(COUNTROWS(fact_results), fact_results[starting_position] = 1, fact_results[finishing_position] = 1, fact_results[fastest_lap_rank] = 1)
+		formatString: 0
+		lineageTag: ac5e032a-fbfb-4b55-9bde-4635826f62d9
+
+	measure 'Normalized Points' = SUMX(fact_results, SWITCH(fact_results[finishing_position], 1, 25, 2, 18, 3, 15, 4, 12, 5, 10, 6, 8, 7, 6, 8, 4, 9, 2, 10, 1, 0))
+		formatString: #,0.0
+		lineageTag: 93a36122-cb8b-4ec0-8efb-37730177b059
+
+	measure 'Normalized Points per Start' = DIVIDE([Normalized Points], [Race Starts])
+		lineageTag: 59f9289a-f801-4c9b-8c4d-2fffac17ad04
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure 'Constructor Color' =
+			VAR Constructor = SELECTEDVALUE(dim_constructors[constructor_ref])
+			RETURN
+			SWITCH(
+			    TRUE(),
+			
+			    -- Ferrari
+			    Constructor IN {
+			        "ferrari",
+			        "de_tomaso-ferrari"
+			    }, "#E8002D",
+			
+			    -- McLaren
+			    Constructor IN {
+			        "mclaren",
+			        "mclaren-ford",
+			        "mclaren-seren",
+			        "mclaren-brm",
+			        "mclaren-alfa_romeo"
+			    }, "#FF8000",
+			
+			    -- Williams
+			    Constructor = "williams", "#00A3E0",
+			
+			    -- Red Bull
+			    Constructor = "red_bull", "#3671C6",
+			
+			    -- Mercedes
+			    Constructor = "mercedes", "#00D2BE",
+			
+			    -- Renault
+			    Constructor = "renault", "#FFF500",
+			
+			    -- Benetton
+			    Constructor = "benetton", "#008C95",
+			
+			    -- Brawn
+			    Constructor = "brawn", "#B6E300",
+			
+			    -- Aston Martin
+			    Constructor = "aston_martin", "#00665E",
+			
+			    -- Alpine
+			    Constructor = "alpine", "#0090FF",
+			
+			    -- Lotus family
+			    Constructor IN {
+			        "team_lotus",
+			        "lotus-climax",
+			        "lotus-ford",
+			        "lotus-brm",
+			        "lotus-maserati",
+			        "lotus-borgward",
+			        "lotus-pw"
+			    }, "#008C45",
+			
+			    -- Brabham family
+			    Constructor IN {
+			        "brabham",
+			        "brabham-ford",
+			        "brabham-climax",
+			        "brabham-brm",
+			        "brabham-repco",
+			        "brabham-alfa_romeo"
+			    }, "#00529B",
+			
+			    -- BRM family
+			    Constructor IN {
+			        "brm",
+			        "brm-ford"
+			    }, "#006B3F",
+			
+			    -- Tyrrell
+			    Constructor = "tyrrell", "#0055A5",
+			
+			    -- Matra
+			    Constructor IN {
+			        "matra",
+			        "matra-ford"
+			    }, "#0080C8",
+			
+			    -- Cooper family
+			    Constructor IN {
+			        "cooper",
+			        "cooper-climax",
+			        "cooper-ford",
+			        "cooper-brm",
+			        "cooper-ferrari",
+			        "cooper-ats",
+			        "cooper-alfa_romeo",
+			        "cooper-maserati",
+			        "cooper-osca",
+			        "cooper-borgward"
+			    }, "#0047AB",
+			
+			    -- Vanwall
+			    Constructor = "vanwall", "#006B3F",
+			
+			    -- Honda
+			    Constructor = "honda", "#FFFFFF",
+			
+			    -- Sauber
+			    Constructor = "sauber", "#00A550",
+			
+			    -- Force India
+			    Constructor = "force_india", "#F596C8",
+			
+			    -- Everything else
+			    "#808080"
+			)
+		lineageTag: 636bbcd1-b74a-4860-9e3b-8574edad8bc3
+
+	measure 'Total Races' = DISTINCTCOUNT(dim_races[race_id])
+		formatString: #,0
+		lineageTag: f5219f81-1ebf-4da9-bfa0-35caa8f07e33
+
+	measure 'Driver Bar Colour' = VAR CurrentDriverWins = [Race Wins] VAR MaxWinsInContext = MAXX(ALLSELECTED(dim_drivers[driver_name]), [Race Wins]) RETURN IF(CurrentDriverWins = MaxWinsInContext && CurrentDriverWins > 0, "#64748B", "#94A3B8")
+		lineageTag: 3287ae93-eaf1-427c-9e1c-f809addd84ad
+
+	measure 'Min Avg Lap Speed (km/h)' = MIN(fact_results[fastest_lap_avg_speed])
+		formatString: 0.0
+		lineageTag: 4c5087b8-9e67-4a40-824b-032a9fd20545
+
+	measure 'Avg Finishing Position' = AVERAGEX(FILTER(fact_results, NOT(ISBLANK(fact_results[finishing_position])) && fact_results[finishing_position] > 0), fact_results[finishing_position])
+		formatString: 0.0
+		lineageTag: da072520-0a75-40c6-a65b-cae1370486f6
 
 	partition _Measures = m
 		mode: import

@@ -26,13 +26,21 @@ table dim_constructors
 
 		annotation SummarizationSetBy = Automatic
 
+	column constructor_ref
+		dataType: string
+		lineageTag: 6cf630bd-689c-4713-b974-3433b9fa4a61
+		summarizeBy: none
+		sourceColumn: constructor_ref
+
+		annotation SummarizationSetBy = Automatic
+
 	partition dim_constructors = m
 		mode: import
 		queryGroup: dim
 		source =
 				let
 				    Source = constructors,
-				    #"Removed Columns" = Table.RemoveColumns(Source,{"constructorRef", "url"})
+				    #"Removed Columns" = Table.RemoveColumns(Source,{"url"})
 				in
 				    #"Removed Columns"
 
