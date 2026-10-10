@@ -6,9 +6,7 @@ An interactive telemetry and historical analytics suite built in **Microsoft Pow
 
 The report combines data preparation, data modelling, DAX measures, and interactive visualisations to turn raw racing data into something easier to explore and understand.
 
-<video width="100%" controls autoplay loop muted>
-<source src="media/dashboard_demo.mp4" type="video/mp4">
-</video>
+https://github.com/user-attachments/assets/7ccf7ae5-62c8-4799-8b1d-d20eac629e0a
 
 ---
 
@@ -28,7 +26,7 @@ The report combines data preparation, data modelling, DAX measures, and interact
 
 A bird's-eye view of Formula 1 history.
 
-![Global Snapshot Dashboard](screenshots\global_snapshot.png)
+![Global Snapshot Dashboard](screenshots/global_snapshot.png)
 
 -  Total races, race entries, classified finishes, and DNFs
 -  Leading team and driver statistics
@@ -41,7 +39,7 @@ A bird's-eye view of Formula 1 history.
 
 A closer look at a team's performance and history.
 
-![Team Spotlight View](screenshots\team_snapshot.png)
+![Team Spotlight View](screenshots/team_snapshot.png)
 
 -  Seasons contested and race entries
 -  Race wins and strong finishing results
@@ -57,7 +55,7 @@ This page makes it easier to explore how a team's performance has changed over t
 
 A closer look at an individual driver's career.
 
-![Driver Spotlight View](screenshots\driver_snapshot.png)
+![Driver Spotlight View](screenshots/driver_snapshot.png)
 
 -  Seasons contested, circuits visited, race entries, wins, and pole positions
 -  Average starting versus finishing position over time
@@ -90,7 +88,7 @@ Here are a few patterns I noticed while exploring the data:
 
 The project uses a relational model with dimension tables describing the main entities and fact tables recording race events and results.
 
-![Power BI Data Model](screenshots\data_model.png)
+![Power BI Data Model](screenshots/data_model.png)
 
 ### 📚 Dimension Tables
 
